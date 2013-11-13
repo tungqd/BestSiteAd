@@ -35,7 +35,10 @@ class SiteTestView
     <div class="tenNewsItem"> 
             <?php
                 $tenArray = $obj->displayTenNews();
-                foreach ($tenArray as $tenItems) {
+                foreach ($tenArray as $key=>$tenItems) {
+                if ($key == 1) {
+                    ?><div id="advertisement">Ad</div>
+                <?php }
             ?>
                 <div id="news">       
                 <a href="index.php">
