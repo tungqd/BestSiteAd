@@ -29,24 +29,22 @@ class SiteTestView
 ?>
 
 <h1><a href="index.php"><?php echo SITENAME; ?></a></h1>
+<b class="highest">10 random news items</b><br/><br/>
 <div id="wrapper" class="siteTest">
     
-    <div class="tenNewsItem">
-        <div id="news">
-            <b class="highest">10 random news items</b><br/><br/>
+    <div class="tenNewsItem"> 
             <?php
                 $tenArray = $obj->displayTenNews();
                 foreach ($tenArray as $tenItems) {
             ?>
-                <div>    
+                <div id="news">       
                 <a href="index.php">
                     <?php echo $tenItems['title'];?></a><br/>
-                <?php echo $tenItems['content'];?><br>
-                </div>
-                
+                <?php echo $tenItems['content'];?><br>  
+                </div> <!-- close div id="news"-->
             <?php 
                 }
             ?>
-        </div> <!-- close div id="news"-->
+        
     </div> <!-- close div class="tenNewsItem"-->
 </div> <!-- close div id="wrapper"-->

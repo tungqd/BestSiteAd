@@ -4,20 +4,29 @@ body, p, h1, h2, h3, h4, table, td, th, ul, ol, textarea, input
 }
 body 
 {
-    background: url(textture-noise.png);
-    overflow: hidden;
+    background: url(textture-noise.png); 
     margin: 0;
     font-size: 20px;
     font-family: "Helvetica Neue", Helvetica;
+    
 }
 
 #wrapper
 {
+    position:fixed;
+    left: 0;
+    height: 100%;
     width: 100%;
     margin: 0 auto;
+    overflow: auto;
 }
 
 .tenNewsItem
 {
     margin-left: 20px;
+}
+#news
+{
+    border: 1px solid black;
+    width: 40%;
 }
