@@ -28,7 +28,18 @@ class main
     */
     function mainController()
     {
+        $array = $this -> getTen();
         $_SESSION['view'] = "SiteTestView";
+
+    }
+    function getTen()
+    {
+        $array = $this->model->getTenRandom();
+        $result = array();
+        foreach($array as $name => $value) {
+           $result[] = $value;
+        }
+        return $result;
     }
 }
 ?>
