@@ -14,11 +14,11 @@ class SiteTestView
     {    
         $this->controller = new main();
     }
-    
+ }   
     /**
     * Display 10 news items
     */
-    function displayTenNews() 
+/*    function displayTenNews() 
     {
         $result = $this->controller->topTen();
         return $result;
@@ -45,3 +45,6 @@ class SiteTestView
         </div> <!-- close div id="news"-->
     </div> <!-- close div class="tenNewsItem"-->
 </div> <!-- close div id="wrapper"-->
+*/
+?>
+<h1> SiteTest </h1>
