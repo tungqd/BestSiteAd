@@ -15,12 +15,12 @@ abstract class BaseView
         $this->controller = new main();
     }
     
-    abstract function displayPoem();
+    abstract function displayTopTenNews();
     
     /**
-    * Display top 10 highest rated poems' title
+    * Display 10 news items
     */
-    function displayTopTen() 
+    function displayTenNews() 
     {
         $result = $this->controller->topTen();
         return $result;
