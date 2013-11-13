@@ -1,0 +1,5 @@
+<!ELEMENT ad (id, title, url, description)>
+<!ELEMENT id (#CDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT description (#PCDATA)> 
