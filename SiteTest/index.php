@@ -25,7 +25,7 @@ class looneyLimericks
     function start()
     {
         // there are 2 controllers
-        $controllers_available= array('main','poem');
+        $controllers_available= array('main');
 
         //deciding the controller to be run
         if(isset($_GET['c']) && in_array($_GET['c'],$controllers_available)){
@@ -55,17 +55,6 @@ class looneyLimericks
         $this -> displayView($_SESSION['view']);
     }
     /**
-    * poem controller
-    */
-    function poem()
-    {
-        require_once("./controllers/poem.php");
-        $poem = new Poem();
-        $poem -> poemController();
-        $this -> displayView($_SESSION['view']);
-    }
-    
-    /**
     *
     * displayView renders and displays specific view
     */
@@ -76,10 +65,10 @@ class looneyLimericks
 
         <html>
             <head>
-                <title>Looney Limericks</title>
+                <title>Site Test</title>
                 <meta name="author" content="Tung Dang, Loc Dang, Khanh Nguyen" />
-                <meta name="description" content="A showcase site for especially entertaining limericks" />
-                <meta name="keywords" content="HW3, poem, looney, limericks" />
+                <meta name="description" content="A sitetest" />
+                <meta name="keywords" content="HW4, sitetest, news" />
                 <meta charset="utf-8" />
                 <meta name="ROBOTS" content="NOINDEX, NOFOLLOW"/>
                 <link rel="stylesheet" type="text/css" href="./css/styles.css" />
