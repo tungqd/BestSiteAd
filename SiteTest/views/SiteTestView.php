@@ -14,34 +14,37 @@ class SiteTestView
     {    
         $this->controller = new main();
     }
-    
+   
     /**
     * Display 10 news items
     */
     function displayTenNews() 
     {
-        $result = $this->controller->topTen();
+        $result = $this->controller->getTen();
         return $result;
     }
 }
     $obj = new SiteTestView();
+
 ?>
 
 <h1><a href="index.php"><?php echo SITENAME; ?></a></h1>
+<b class="highest">10 random news items</b><br/><br/>
 <div id="wrapper" class="siteTest">
     
-    <div class="tenNewsItem">
-        <div id="news">
-            <b class="highest">10 random news items</b><br/>
+    <div class="tenNewsItem"> 
             <?php
-                $tenArray = $obj->displayTopTen();
+                $tenArray = $obj->displayTenNews();
                 foreach ($tenArray as $tenItems) {
             ?>
-                    <a href="index.php?c=main&amp;view=PoemView&amp;ac=displayPoem&amp;e=<?php echo $tenItems['ID']; ?>">
-            <?php echo $tenItems['title'];?></a><br/>
+                <div id="news">       
+                <a href="index.php">
+                    <?php echo $tenItems['title'];?></a><br/>
+                <?php echo $tenItems['content'];?><br>  
+                </div> <!-- close div id="news"-->
             <?php 
                 }
             ?>
-        </div> <!-- close div id="news"-->
+        
     </div> <!-- close div class="tenNewsItem"-->
 </div> <!-- close div id="wrapper"-->

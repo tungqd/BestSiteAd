@@ -4,72 +4,29 @@ body, p, h1, h2, h3, h4, table, td, th, ul, ol, textarea, input
 }
 body 
 {
-    background: url(textture-noise.png);
-    overflow: hidden;
+    background: url(textture-noise.png); 
     margin: 0;
     font-size: 20px;
     font-family: "Helvetica Neue", Helvetica;
+    
 }
 
 #wrapper
 {
+    position:fixed;
+    left: 0;
+    height: 100%;
     width: 100%;
     margin: 0 auto;
+    overflow: auto;
 }
 
-#poemWrapper
+.tenNewsItem
 {
-    width: 60%;
-    float: left;
-    margin: 0 auto;
+    margin-left: 20px;
 }
-
-#link
+#news
 {
-    width: 100%;
-    float: bottom;
-}
-
-#poem
-{
-    width: 50%;
-    float: left;
-}
-
-#rate
-{
-    width: 50%;
-}
-
-#topHighest
-{
-    text-align: center;
-    float: left;
-    padding: 10px;
-}
-
-#topRecent
-{
-    text-align: center;
-    float: left;
-    padding: 10px;
-}
-.right
-{
+    border: 1px solid black;
     width: 40%;
-    float:right;
-}
-#rating
-{
-    visibility: hidden;
-}
-#halfstarwrapper
-{
-    position:relative;
-    height: 1px;
-    width: 1px;
-}
-#halfstar
-{
-    position:relative;
 }
