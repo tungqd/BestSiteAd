@@ -9,7 +9,7 @@
 *
 */
 session_start();
-class looneyLimericks
+class SiteTest
 {
     /**
     * Constructor
@@ -78,8 +78,8 @@ class looneyLimericks
             <head>
                 <title>Looney Limericks</title>
                 <meta name="author" content="Tung Dang, Loc Dang, Khanh Nguyen" />
-                <meta name="description" content="A showcase site for especially entertaining limericks" />
-                <meta name="keywords" content="HW3, poem, looney, limericks" />
+                <meta name="description" content="A showcase site displays news items." />
+                <meta name="keywords" content="HW4, items, news" />
                 <meta charset="utf-8" />
                 <meta name="ROBOTS" content="NOINDEX, NOFOLLOW"/>
                 <link rel="stylesheet" type="text/css" href="./css/styles.css" />
@@ -94,7 +94,7 @@ class looneyLimericks
 <?php
     }
 }
-$looney = new looneyLimericks();
+$looney = new SiteTest();
 $looney -> start(); 
 ?>
 

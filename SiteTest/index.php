@@ -9,7 +9,7 @@
 *
 */
 session_start();
-class looneyLimericks
+class BestSiteAd
 {
     /**
     * Constructor
@@ -25,7 +25,7 @@ class looneyLimericks
     function start()
     {
         // there are 2 controllers
-        $controllers_available= array('main');
+        $controllers_available= array('main','poem');
 
         //deciding the controller to be run
         if(isset($_GET['c']) && in_array($_GET['c'],$controllers_available)){
@@ -55,6 +55,17 @@ class looneyLimericks
         $this -> displayView($_SESSION['view']);
     }
     /**
+    * poem controller
+    */
+    function poem()
+    {
+        require_once("./controllers/poem.php");
+        $poem = new Poem();
+        $poem -> poemController();
+        $this -> displayView($_SESSION['view']);
+    }
+    
+    /**
     *
     * displayView renders and displays specific view
     */
@@ -65,10 +76,10 @@ class looneyLimericks
 
         <html>
             <head>
-                <title>Site Test</title>
+                <title>Looney Limericks</title>
                 <meta name="author" content="Tung Dang, Loc Dang, Khanh Nguyen" />
-                <meta name="description" content="A sitetest" />
-                <meta name="keywords" content="HW4, sitetest, news" />
+                <meta name="description" content="A showcase site using REST-based advertising web service." />
+                <meta name="keywords" content="HW4, ad, product" />
                 <meta charset="utf-8" />
                 <meta name="ROBOTS" content="NOINDEX, NOFOLLOW"/>
                 <link rel="stylesheet" type="text/css" href="./css/styles.css" />
@@ -83,7 +94,7 @@ class looneyLimericks
 <?php
     }
 }
-$looney = new looneyLimericks();
+$looney = new BestSiteAd();
 $looney -> start(); 
 ?>
 

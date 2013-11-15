@@ -1,5 +1,6 @@
 <?php
 /**
+ * SiteTest model
  * This class is used to communicate with the database.
  * @author Loc Dang, Tung Dang, Khanh Nguyen
  *

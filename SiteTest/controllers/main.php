@@ -1,8 +1,8 @@
 <?php
 /**
-* main.php
+* SiteTest main.php
 *
-* Main controller handles retrieveing poem and rating info, adding rating
+* Main controller
 *
 * @author   Tung Dang, Loc Dang, Khanh Nguyen
 *
