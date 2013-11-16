@@ -1,9 +1,10 @@
 <?php
-
-    $host = "localhost";
-    $user = "root";
-    $pass = "";
-    $database = "hw4_sitetest";
+    require_once('config.php');
+    
+    $host = HOST;
+    $user = USERNAME;
+    $pass = PASSWORD;
+    $database = DATABASE;
 
     $db = mysqli_connect($host, $user, $pass) or die('Could not connect: ' . mysql_error());
 

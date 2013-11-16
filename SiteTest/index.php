@@ -9,6 +9,7 @@
 *
 */
 session_start();
+
 class BestSiteAd
 {
     /**
@@ -19,6 +20,14 @@ class BestSiteAd
         require_once('./config/config.php');
     }
     
+    /**
+    *
+    * render function
+    * @params $view view to be rendered
+    */
+    function render($viewname) {
+        require_once("./views/{$viewname}.php");
+    }
     /**
     * Calls appropriate controllers
     */
@@ -41,7 +50,7 @@ class BestSiteAd
         }
 
         //function pointer to call the controller
-        $this -> $controller();
+        $this->$controller();
     }  
      
     /**
@@ -51,8 +60,8 @@ class BestSiteAd
     {
         require_once("./controllers/main.php");
         $main = new main();
-        $main -> mainController();
-        $this -> displayView($_SESSION['view']);
+        $main->mainController();
+        $this->displayView($_SESSION['view']);
     }
     /**
     * poem controller
@@ -61,13 +70,14 @@ class BestSiteAd
     {
         require_once("./controllers/poem.php");
         $poem = new Poem();
-        $poem -> poemController();
-        $this -> displayView($_SESSION['view']);
+        $poem->poemController();
+        $this->displayView($_SESSION['view']);
     }
     
     /**
     *
     * displayView renders and displays specific view
+    * @params $viewname view to be displayed
     */
     function displayView($viewname)
     {
@@ -76,7 +86,7 @@ class BestSiteAd
 
         <html>
             <head>
-                <title>Looney Limericks</title>
+                <title>SiteTest</title>
                 <meta name="author" content="Tung Dang, Loc Dang, Khanh Nguyen" />
                 <meta name="description" content="A showcase site using REST-based advertising web service." />
                 <meta name="keywords" content="HW4, ad, product" />
@@ -87,14 +97,14 @@ class BestSiteAd
             
             <body>
             <?php   
-                require_once("./views/{$viewname}.php"); 
+                $this->render($viewname);
             ?>
             </body>
         </html>
 <?php
     }
 }
-$looney = new BestSiteAd();
-$looney -> start(); 
+$site_obj = new BestSiteAd();
+$site_obj -> start(); 
 ?>
 
