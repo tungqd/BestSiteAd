@@ -9,7 +9,7 @@
 *
 */
 session_start();
-class SiteTest
+class BestSiteAd
 {
     /**
     * Constructor
@@ -18,7 +18,14 @@ class SiteTest
     {
         require_once('./config/config.php');
     }
-    
+    /**
+    *
+    * render function
+    * @params $view view to be rendered
+    */
+    function render($viewname) {
+        require_once("./views/{$viewname}.php");
+    }
     /**
     * Calls appropriate controllers
     */
@@ -41,7 +48,7 @@ class SiteTest
         }
 
         //function pointer to call the controller
-        $this -> $controller();
+        $this->$controller();
     }  
      
     /**
@@ -51,8 +58,8 @@ class SiteTest
     {
         require_once("./controllers/main.php");
         $main = new main();
-        $main -> mainController();
-        $this -> displayView($_SESSION['view']);
+        $main->mainController();
+        $this->displayView($_SESSION['view']);
     }
     /**
     * poem controller
@@ -61,8 +68,8 @@ class SiteTest
     {
         require_once("./controllers/poem.php");
         $poem = new Poem();
-        $poem -> poemController();
-        $this -> displayView($_SESSION['view']);
+        $poem->poemController();
+        $this->displayView($_SESSION['view']);
     }
     
     /**
@@ -76,10 +83,10 @@ class SiteTest
 
         <html>
             <head>
-                <title>Looney Limericks</title>
+                <title>Best Site Ad</title>
                 <meta name="author" content="Tung Dang, Loc Dang, Khanh Nguyen" />
-                <meta name="description" content="A showcase site displays news items." />
-                <meta name="keywords" content="HW4, items, news" />
+                <meta name="description" content="A site provides REST services" />
+                <meta name="keywords" content="HW4, items, ad, rest, api" />
                 <meta charset="utf-8" />
                 <meta name="ROBOTS" content="NOINDEX, NOFOLLOW"/>
                 <link rel="stylesheet" type="text/css" href="./css/styles.css" />
@@ -87,14 +94,14 @@ class SiteTest
             
             <body>
             <?php   
-                require_once("./views/{$viewname}.php"); 
+                $this->render($viewname); 
             ?>
             </body>
         </html>
 <?php
     }
 }
-$looney = new SiteTest();
-$looney -> start(); 
+$siteAd_obj = new BestSiteAd();
+$siteAd_obj->start(); 
 ?>
 
