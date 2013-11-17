@@ -24,7 +24,7 @@ class Model
      */
     function getRandomAd() 
     {
-        $query = "select * from News order by rand() limit 1";
+        $query = "select * from Ads order by rand() limit 1";
         $result = mysqli_query($this->db, $query);
         return mysqli_fetch_array($result, MYSQLI_ASSOC);
     }

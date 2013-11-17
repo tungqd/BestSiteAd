@@ -39,7 +39,6 @@ class BestSiteAd
             list($hostname,$request) = explode("/index.php/",$url);
             if (strpos($request, "/?")) {
                 list ($method, $args) = explode("/?", $request);
-                echo $method;
                 return $method;
             }
             else {
@@ -54,12 +53,13 @@ class BestSiteAd
     */
     function start()
     {
-        $this->getMethod();
+        $rest = $this->getMethod();
         // there are 2 controllers
-        $controllers_available= array('main','ad');
-
-        //deciding the controller to be run
-        if(isset($_GET['c']) && in_array($_GET['c'],$controllers_available)){
+        $controllers_available= array('main','ad','api');
+        if ($rest !==0) {
+            $controller = "rest";
+        }
+        else if(isset($_GET['c']) && in_array($_GET['c'],$controllers_available)){
             if("main"==$_GET['c']){
                 $controller = "main";
             }
@@ -94,6 +94,17 @@ class BestSiteAd
         $ad = new Ad();
         $ad->adController();
         $this->displayView($_SESSION['view']);
+    }
+    /**
+    * api controller
+    */
+    function rest()
+    {
+        require_once("./controllers/rest.php");
+        $rest = new Rest();
+        $method = $this->getMethod();
+        $rest->restController($method);
+    //    $this->displayView($_SESSION['view']);
     }
     
     /**
