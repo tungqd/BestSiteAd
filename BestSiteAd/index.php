@@ -30,15 +30,24 @@ class BestSiteAd
     /**
     *
     * Get method name from REST services call
-    * @return $method name of method to be called
+    * @return $method name of method to be called or 0 if no method and arg is detected
     */
     function getMethod()
     {
         $url = $_SERVER['REQUEST_URI'];
-        list($hostname,$request) = explode("/index.php/",$url);
-        list ($method, $args) = explode("/?", $request);
-        echo $method;
-        return $method;
+        if (strpos($url, "/index.php/") !== false) {
+            list($hostname,$request) = explode("/index.php/",$url);
+            if (strpos($request, "/?") !== false) {
+                list ($method, $args) = explode("/?", $request);
+                echo $method;
+                return $method;
+            }
+            else {
+                return 0;
+            }
+        } else {
+            return 0;
+        }
     }
     /**
     * Calls appropriate controllers
