@@ -15,7 +15,7 @@ class LandingView
     }
 
     /**
-    * Display featured poem. 
+    * Display ad. 
     * If the time interval is greater than 10 minutes, display another poem.
     */
     function displayAd()
@@ -23,6 +23,8 @@ class LandingView
         $result = $this->controller->getAllAds();
         return $result;
     }
+    
+    
     function getCount($adID)
     {
         return $count = $this->controller->getClicks($adID);

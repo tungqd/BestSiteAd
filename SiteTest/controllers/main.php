@@ -41,5 +41,25 @@ class main
         }
         return $result;
     }
+    
+    function getAnAd()
+    {
+        $array = $this->model->getAd();
+        var_dump($array);
+        //return $result;
+    }
+    
+    function getAdClicks()
+    {
+        $counter = $this->model->getAdCounter();
+        return $counter;
+    }
+    
+    function getNewsClicks($ID)
+    {
+        $counter = $this->model->getNewsCounter($ID);
+        return $counter;
+    }
+   
 }
 ?>

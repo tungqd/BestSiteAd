@@ -63,6 +63,51 @@ class Model
         }
         return $poems;
     }
+    /**
+     * Gets Ad 0 from Ads table
+     * @return an associated array containing adID, title, url, description.
+     */
+    function getAd() 
+    {
+        $query = "select * from Ads where adID=1";
+        $result = mysqli_query($this->db, $query);
+        return mysqli_fetch_array($result, MYSQLI_ASSOC);
+    }
+    
+    /**
+    * Increment counter to news items every time its link is clicked
+    * @param $ID ID of a news item
+    * 
+    */
+    function addNewsCounter($ID)
+    {
+        
+    }
+               
+    /**
+    * Get number of clicks for an ad
+    * @return number of clicks for certain ad
+    */
+    function getAdCounter()
+    {
+        $query = "select * from Counter where adID = 0";
+        $result = mysqli_query($this->db, $query);
+        $array = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        return $array['count'];
+    }
+    
+     /**
+    * Get number of clicks for a news item
+    * @param $ID ID of a news item
+    * @return number of clicks for certain news item
+    */
+    function getNewsCounter($ID)
+    {
+        $query = "select counter from News where ID = $ID";
+        $result = mysqli_query($this->db, $query);
+        $array = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        return $array['counter'];
+    }
     
 }
 ?>
