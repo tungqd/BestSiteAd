@@ -14,13 +14,16 @@ class Model
      */
     function __construct() 
     {
-        $this->db = @mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE) or die('Could not connect to MySQL: ' . 	mysqli_connect_error($this->db));
+        $this->db = @mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE)
+            or die('Could not connect to MySQL: ' . 	
+                    mysqli_connect_error($this->db));
         mysqli_set_charset($this->db, 'uft8');
     }
-    
+
     /**
      * Gets a random poem from Poem table.
-     * @return an associated array containing id, title, author, content, timeSelected of a poem.
+     * @return an associated array containing id, title, author, content, 
+     * and timeSelected of a poem.
      */
     function getRandomStory() 
     {
@@ -28,11 +31,12 @@ class Model
         $result = mysqli_query($this->db, $query);
         return mysqli_fetch_array($result, MYSQLI_ASSOC);
     }
-    
+
     /**
      * Gets a poem from Poem table.
      * @param id the id of the poem
-     * @return an associated array containing id, title, author, content, timeSelected of a poem.
+     * @return an associated array containing id, title, author, content,
+     * and timeSelected of a poem.
      */
     function getAStory($id) 
     {
@@ -40,7 +44,7 @@ class Model
         $result = mysqli_query($this->db, $query);
         return mysqli_fetch_array($result, MYSQLI_ASSOC);
     }
-    
+
     /**
      * Get top ten poems with highest ratings
      * @return an array of associated arrays of top ten poems

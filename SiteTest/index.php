@@ -19,7 +19,7 @@ class BestSiteAd
     {
         require_once('./config/config.php');
     }
-    
+
     /**
     *
     * render function
@@ -28,6 +28,7 @@ class BestSiteAd
     function render($viewname) {
         require_once("./views/{$viewname}.php");
     }
+
     /**
     * Calls appropriate controllers
     */
@@ -36,12 +37,9 @@ class BestSiteAd
         require_once("./controllers/main.php");
         $main = new main();
         $main->mainController();
-        require_once("./views/SiteTestView.php");
-        $siteview = new SiteTestView();
-        $siteview->displayView();
+        $this->displayView($_SESSION['view']);
     }
 }
 $site_obj = new BestSiteAd();
 $site_obj -> start(); 
 ?>
-
