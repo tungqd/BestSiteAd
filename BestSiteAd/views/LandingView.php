@@ -23,6 +23,10 @@ class LandingView
         $result = $this->controller->getAllAds();
         return $result;
     }
+    function getCount($adID)
+    {
+        return $count = $this->controller->getClicks($adID);
+    }
 }
     $obj = new LandingView();
 ?>
@@ -39,9 +43,11 @@ class LandingView
                 <?php
                     $ads = $obj->displayAd();
                     foreach($ads as $ad) {
+                        $count = $obj->getCount($ad['adID']);
                 ?>
                     <label>Title:</label><?php echo $ad['title']; ?><br/>
-                    <label>Description:</label><?php echo $ad['description']; ?><br/>
+                    <label>Description:</label><?php echo $ad['description'];?><br/>
+                    <label>Number of clicks:</label><?php echo $count;?><br/>
                     <form action="index.php" id="deleteAd" name="deleteAd" method="GET">
                         <input type="hidden" name="c" value="ad">
                         <input type="hidden" name="ac" value="deleteAd">
@@ -69,7 +75,7 @@ class LandingView
         </div> <!-- close div id="submitAd" -->
 
         <div id="resetLink">
-            <a>Reset Counter</a>
+            <a href="index.php?c=main&ac=resetCount">Reset Counter</a>
         </div> <!-- close div id="resetLink" -->
     </div> <!-- close div class="right"-->
 </div> <!-- close div id="wrapper"-->

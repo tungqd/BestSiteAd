@@ -6,8 +6,9 @@
     $database = DATABASE;
 
     $db = mysqli_connect($host, $user, $pass) or die('Could not connect: ' . mysql_error());
-
-    $query = "DROP DATABASE IF EXISTS $database;";
+    
+    $query = "SET SQL_SAFE_UPDATES=0;";
+    $query .= "DROP DATABASE IF EXISTS $database;";
     $query .= "CREATE DATABASE $database;";
     $query .= "USE $database;";
     $query .= "DROP TABLE IF EXISTS Ads;";
@@ -19,6 +20,9 @@
     $query .= "INSERT INTO ads(title, url, description) VALUES ('First ad','www.somewhere.com','First ad ever!');";
     $query .= "INSERT INTO ads(title, url, description) VALUES ('Second ad','www.somewhere2.com','Second ad!');";
     $query .= "INSERT INTO ads(title, url, description) VALUES ('Third ad','www.somewhere3.com','Third ad!');";
+    $query .= "INSERT INTO Counter(adID,count) VALUES('1','0');";
+    $query .= "INSERT INTO Counter(adID,count) VALUES('2','0');";
+    $query .= "INSERT INTO Counter(adID,count) VALUES('3','0');";
     if (mysqli_multi_query($db,$query)) {
         echo "Database and Schemas for $database created successfully.";
     } 

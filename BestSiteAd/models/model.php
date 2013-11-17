@@ -91,5 +91,29 @@ class Model
         }
         else return false;
     }
+    /**
+    * Get number of clicks for an add
+    * @param $adID ID of the ad
+    * @return number of clicks for certain ad
+    */
+    function getCounter($adID)
+    {
+        $query = "select * from Counter where adID = $adID";
+        $result = mysqli_query($this->db, $query);
+        $array = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        return $array['count'];
+    }
+    /**
+    * Reset counter 
+    * @return true if success; ortherwise, return false
+    */
+    function resetCounter()
+    {
+        $query = "UPDATE Counter SET count=0 WHERE count<>0;";
+        if (mysqli_query($this->db, $query)) {
+            return true;
+        }
+        else return false;
+    }
 }
 ?>

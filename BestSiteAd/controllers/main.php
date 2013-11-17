@@ -28,7 +28,9 @@ class main
     */
     function mainController()
     {
-        //$array = $this -> getAd();
+        if (isset($_GET["ac"]) && $_GET["ac"] == "resetCount") {
+            $this->resetClicks();
+        }
         $_SESSION['view'] = "LandingView";
 
     }
@@ -41,7 +43,15 @@ class main
         }
         return $result;
     }
-    
+    function getClicks($adID)
+    {
+        $counter = $this->model->getCounter($adID);
+        return $counter;
+    }
+    function resetClicks()
+    {
+        return $this->model->resetCounter();
+    }
 
 }
 ?>
