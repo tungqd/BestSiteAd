@@ -48,12 +48,7 @@ class LandingView
                     <label>Title:</label><?php echo $ad['title']; ?><br/>
                     <label>Description:</label><?php echo $ad['description'];?><br/>
                     <label>Number of clicks:</label><?php echo $count;?><br/>
-                    <form action="index.php" id="deleteAd" name="deleteAd" method="GET">
-                        <input type="hidden" name="c" value="ad">
-                        <input type="hidden" name="ac" value="deleteAd">
-                        <input type="hidden" name="adID" value="<?php echo $ad['adID'];?>"/>
-                        <input type="submit" value="Delete"/>
-                    </form>
+                    <a href="index.php?c=ad&ac=deleteAd&adID=<?php echo $ad['adID'];?>">Delete Ad</a><br/>
                 <?php
                 }
                 ?>
