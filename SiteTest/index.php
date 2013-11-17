@@ -37,9 +37,7 @@ class BestSiteAd
         $main = new main();
         $main->mainController();
         $this->displayView($_SESSION['view']);
-    }  
-     
-    
+    }
     /**
     *
     * displayView renders and displays specific view

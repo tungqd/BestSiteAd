@@ -33,30 +33,22 @@ class LandingView
 
 <h1><a href="index.php"><?php echo SITENAME; ?></a></h1>
 <div id="wrapper" class="landingPage">
-
-    <div id="product">
-        <div id="productItem">
-            <p>Laundry Detergent</p>
-            <div id="adWrapper">
-            <div id="adItem">
-                <p>Four Ads for Laundry Detergent</p>
-                <?php
-                    $ads = $obj->displayAd();
-                    foreach($ads as $ad) {
-                        $count = $obj->getCount($ad['adID']);
-                ?>
-                    <label>Title:</label><?php echo $ad['title']; ?><br/>
-                    <label>Description:</label><?php echo $ad['description'];?><br/>
-                    <label>Number of clicks:</label><?php echo $count;?><br/>
-                    <a href="index.php?c=ad&ac=deleteAd&adID=<?php echo $ad['adID'];?>">Delete Ad</a><br/>
-                <?php
-                }
-                ?>
+    <div class="ads">
+        <?php
+            $ads = $obj->displayAd();
+            foreach($ads as $ad) {
+                $count = $obj->getCount($ad['adID']);
+        ?>
+            <div class="adItem">
+            <label><strong>Title:</strong></label><?php echo $ad['title']; ?><br/>
+            <label><strong>Description:</strong></label><?php echo $ad['description'];?><br/>
+            <label><strong>Number of clicks:</strong></label><?php echo $count;?><br/>
+            <a href="index.php?c=ad&ac=deleteAd&adID=<?php echo $ad['adID'];?>">Delete Ad</a><br/>
             </div><!-- close div id="adItem" -->
-            </div><!-- close div id="adwrapper" -->
-         </div> <!-- close div id="productItem" -->
-    </div><!-- close div id="product" -->
-    
+        <?php
+        }
+        ?>
+    </div><!-- close div id="ads" --> 
     <div class="right">
         <div id="submitAd">
             <form onSubmit="return doCheck();" action="index.php?c=ad" id="addNewAd" name="addAd" method="POST">
@@ -68,7 +60,6 @@ class LandingView
                 <input type="submit" value="Submit"/>
             </form>
         </div> <!-- close div id="submitAd" -->
-
         <div id="resetLink">
             <a href="index.php?c=main&ac=resetCount">Reset Counter</a>
         </div> <!-- close div id="resetLink" -->

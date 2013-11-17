@@ -22,9 +22,14 @@ body
     width: 40%;
     float:right;
 }
-#product
+.ads
 {
     width: 40%;
     float:left;
+}
+.adItem
+{
+    border: 1px dotted black;
+    background-color: LightGray;
 }
 
