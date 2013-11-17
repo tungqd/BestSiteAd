@@ -20,7 +20,7 @@ class LandingView
     */
     function displayAd()
     {
-        $result = $this->controller->getAd();
+        $result = $this->controller->getAllAds();
         return $result;
     }
 }
@@ -34,10 +34,18 @@ class LandingView
         <div id="productItem">
             <p>Laundry Detergent</p>
         </div> <!-- close div id="productItem" -->
-         
         <div id="adWrapper">
             <div id="adItem">
                 <p>Four Ads for Laundry Detergent</p>
+                <?php
+                    $ads = $obj->displayAd();
+                    foreach($ads as $ad) {
+                ?>
+                    <label>Title:</label><?php echo $ad['title']; ?><br/>
+                    <label>Description:</label><?php echo $ad['description']; ?><br/>
+                <?php
+                }
+                ?>
             </div><!-- close div id="adItem" -->
         </div><!-- close div id="ratewrapper" -->
         

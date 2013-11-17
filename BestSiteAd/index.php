@@ -56,7 +56,7 @@ class BestSiteAd
     {
         $this->getMethod();
         // there are 2 controllers
-        $controllers_available= array('main','poem');
+        $controllers_available= array('main','ad');
 
         //deciding the controller to be run
         if(isset($_GET['c']) && in_array($_GET['c'],$controllers_available)){
@@ -86,13 +86,13 @@ class BestSiteAd
         $this->displayView($_SESSION['view']);
     }
     /**
-    * poem controller
+    * ad controller
     */
-    function poem()
+    function ad()
     {
-        require_once("./controllers/poem.php");
-        $poem = new Poem();
-        $poem->poemController();
+        require_once("./controllers/ad.php");
+        $ad = new ad();
+        $ad->adController();
         $this->displayView($_SESSION['view']);
     }
     

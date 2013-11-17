@@ -32,6 +32,16 @@ class main
         $_SESSION['view'] = "LandingView";
 
     }
+    function getAllAds()
+    {
+        $array = $this->model->getAds();
+        $result = array();
+        foreach($array as $name => $value) {
+           $result[] = $value;
+       }
+       return $result;
+    }
+    
 
 }
 ?>
