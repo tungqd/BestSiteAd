@@ -41,10 +41,12 @@ class SiteTestView
                 $tenArray = $obj->displayTenNews();
                 foreach ($tenArray as $key=>$tenItems) {
                 if ($key == 1) {
-                    ?><div id="advertisement">Ad
+                    ?><div id="advertisement">
                         <?php
-                           $obj->displayAd();
+                           $ad = $obj->displayAd();
                         ?>
+                            <a href="index.php"><?php echo $ad['title'];?></a><br/>
+                            <?php echo $ad['description'];?>
                     </div>
                 <?php }
             ?>

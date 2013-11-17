@@ -42,10 +42,10 @@ class BestSiteAd
                 return $method;
             }
             else {
-                return 0;
+                return null;
             }
         } else {
-            return 0;
+            return null;
         }
     }
     /**
@@ -53,10 +53,10 @@ class BestSiteAd
     */
     function start()
     {
-        $rest = $this->getMethod();
-        // there are 2 controllers
-        $controllers_available= array('main','ad','api');
-        if ($rest !==0) {
+        $restReq = $this->getMethod();
+        // there are 3 controllers
+        $controllers_available= array('main','ad','rest');
+        if ($restReq !==null) {
             $controller = "rest";
         }
         else if(isset($_GET['c']) && in_array($_GET['c'],$controllers_available)){
@@ -96,7 +96,7 @@ class BestSiteAd
         $this->displayView($_SESSION['view']);
     }
     /**
-    * api controller
+    * rest controller
     */
     function rest()
     {
@@ -104,12 +104,12 @@ class BestSiteAd
         $rest = new Rest();
         $method = $this->getMethod();
         $rest->restController($method);
-    //    $this->displayView($_SESSION['view']);
     }
     
     /**
     *
     * displayView renders and displays specific view
+    * @param $viewname view to be displayed
     */
     function displayView($viewname)
     {

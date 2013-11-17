@@ -21,18 +21,26 @@ class main
     {
         $this->model = new model();   
     }
+    /**
+    * Get an ad from REST API
+    * @return associative array containing title, url, description of the ad
+    */
     function getAd()
     {
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "http://localhost/CS174/Hw4/BestSiteAd/index.php/getad/?format=xml");
+        $url = "http://localhost/CS174/Hw4/BestSiteAd/index.php/getad/?format=xml";
+        curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($curl);
         
         $xml = simplexml_load_string($result);
-        echo $xml->adID."<br/>";
-        echo $xml->title."<br/>";
-        echo $xml->url."<br/>";
+        $result = array();
+        $result['title'] = $xml->title;
+        $result['url'] = $xml->url;
+        $result['description'] = $xml->description;
         curl_close($curl);
+        
+        return $result;
     }
     /**
     *

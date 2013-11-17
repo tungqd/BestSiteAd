@@ -8,9 +8,8 @@
 *
 */
 require_once('./models/model.php');
-require_once('API.php');
 
-class Rest extends API
+class Rest
 {
 
     private $model;
