@@ -23,6 +23,10 @@ class SiteTestView
         $result = $this->controller->getTen();
         return $result;
     }
+    function displayAd()
+    {
+        return $this->controller->getAd();
+    }
 }
     $obj = new SiteTestView();
 
@@ -37,7 +41,11 @@ class SiteTestView
                 $tenArray = $obj->displayTenNews();
                 foreach ($tenArray as $key=>$tenItems) {
                 if ($key == 1) {
-                    ?><div id="advertisement">Ad</div>
+                    ?><div id="advertisement">Ad
+                        <?php
+                           $obj->displayAd();
+                        ?>
+                    </div>
                 <?php }
             ?>
                 <div id="news">       

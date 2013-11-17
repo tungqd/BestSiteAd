@@ -21,7 +21,19 @@ class main
     {
         $this->model = new model();   
     }
-    
+    function getAd()
+    {
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, "http://localhost/CS174/Hw4/BestSiteAd/index.php/getad/?format=xml");
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($curl);
+        
+        $xml = simplexml_load_string($result);
+        echo $xml->adID."<br/>";
+        echo $xml->title."<br/>";
+        echo $xml->url."<br/>";
+        curl_close($curl);
+    }
     /**
     *
     * Main controller

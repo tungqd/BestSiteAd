@@ -25,7 +25,6 @@ class Rest extends API
     function restController($method)
     {
         if($method == "getad") {
-           //echo "GET AN AD";
             $this->getAd();
         }
     }
@@ -35,7 +34,7 @@ class Rest extends API
     function getAd()
     {
         $array =$this->model->getRandomAd();
-        $xml= new SimpleXMLElement("<?xml version=\"1.0\"?><ad></ad>");
+        $xml= new SimpleXMLElement("<ad></ad>");
         foreach($array as $key => $value) {
         if(is_array($value)) {
             if(!is_numeric($key)){

@@ -33,6 +33,8 @@ class BestSiteAd
     */
     function start()
     {
+
+
         // there are 2 controllers
         $controllers_available= array('main','poem');
 
@@ -90,7 +92,7 @@ class BestSiteAd
                 <meta name="author" content="Tung Dang, Loc Dang, Khanh Nguyen" />
                 <meta name="description" content="A showcase site using REST-based advertising web service." />
                 <meta name="keywords" content="HW4, ad, product" />
-                <meta charset="utf-8" />
+                <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
                 <meta name="ROBOTS" content="NOINDEX, NOFOLLOW"/>
                 <link rel="stylesheet" type="text/css" href="./css/styles.css" />
             </head>
