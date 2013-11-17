@@ -35,9 +35,9 @@ class BestSiteAd
     function getMethod()
     {
         $url = $_SERVER['REQUEST_URI'];
-        if (strpos($url, "/index.php/") !== false) {
+        if (strpos($url, "/index.php/")) {
             list($hostname,$request) = explode("/index.php/",$url);
-            if (strpos($request, "/?") !== false) {
+            if (strpos($request, "/?")) {
                 list ($method, $args) = explode("/?", $request);
                 echo $method;
                 return $method;

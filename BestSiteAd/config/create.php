@@ -10,10 +10,10 @@
     $query = "DROP DATABASE IF EXISTS $database;";
     $query .= "CREATE DATABASE $database;";
     $query .= "USE $database;";
-    $query .= "DROP TABLE IF EXISTS ads;";
-    $query .= "CREATE TABLE ads (adID INT not null auto_increment,title VARCHAR(30) not null,url VARCHAR(100) not null,description VARCHAR(500) not null);";
+    $query .= "DROP TABLE IF EXISTS Ads;";
+    $query .= "CREATE TABLE Ads (adID INT not null auto_increment,title VARCHAR(30) not null,url VARCHAR(100) not null, description VARCHAR(500) not null, PRIMARY KEY(adID));";
     $query .= "DROP TABLE IF EXISTS Counter;";
-    $query .= "CREATE TABLE Counter (adID INT not null, count INT not null);";
+    $query .= "CREATE TABLE Counter (adID INT not null, count INT not null, PRIMARY KEY(adID));";
     
     //add initial data
     $query .= "INSERT INTO ads(title, url, description) VALUES ('First ad','www.somewhere.com','First ad ever!');";
