@@ -36,7 +36,9 @@ class BestSiteAd
         require_once("./controllers/main.php");
         $main = new main();
         $main->mainController();
-        $this->displayView($_SESSION['view']);
+        require_once("./views/SiteTestView.php");
+        $siteview = new SiteTestView();
+        $siteview->displayView();
     }
 }
 $site_obj = new BestSiteAd();
