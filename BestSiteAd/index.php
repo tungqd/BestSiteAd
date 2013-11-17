@@ -23,14 +23,29 @@ class BestSiteAd
     * render function
     * @params $view view to be rendered
     */
-    function render($viewname) {
+    function render($viewname)
+    {
         require_once("./views/{$viewname}.php");
+    }
+    /**
+    *
+    * Get method name from REST services call
+    * @return $method name of method to be called
+    */
+    function getMethod()
+    {
+        $url = $_SERVER['REQUEST_URI'];
+        list($hostname,$request) = explode("/index.php/",$url);
+        list ($method, $args) = explode("/?", $request);
+        echo $method;
+        return $method;
     }
     /**
     * Calls appropriate controllers
     */
     function start()
     {
+        $this->getMethod();
         // there are 2 controllers
         $controllers_available= array('main','poem');
 
