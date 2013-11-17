@@ -91,7 +91,7 @@ class BestSiteAd
     function ad()
     {
         require_once("./controllers/ad.php");
-        $ad = new ad();
+        $ad = new Ad();
         $ad->adController();
         $this->displayView($_SESSION['view']);
     }

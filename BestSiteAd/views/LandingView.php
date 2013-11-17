@@ -33,8 +33,7 @@ class LandingView
     <div id="product">
         <div id="productItem">
             <p>Laundry Detergent</p>
-        </div> <!-- close div id="productItem" -->
-        <div id="adWrapper">
+            <div id="adWrapper">
             <div id="adItem">
                 <p>Four Ads for Laundry Detergent</p>
                 <?php
@@ -43,21 +42,28 @@ class LandingView
                 ?>
                     <label>Title:</label><?php echo $ad['title']; ?><br/>
                     <label>Description:</label><?php echo $ad['description']; ?><br/>
+                    <form action="index.php" id="deleteAd" name="deleteAd" method="GET">
+                        <input type="hidden" name="c" value="ad">
+                        <input type="hidden" name="ac" value="deleteAd">
+                        <input type="hidden" name="adID" value="<?php echo $ad['adID'];?>"/>
+                        <input type="submit" value="Delete"/>
+                    </form>
                 <?php
                 }
                 ?>
             </div><!-- close div id="adItem" -->
-        </div><!-- close div id="ratewrapper" -->
-        
+            </div><!-- close div id="adwrapper" -->
+         </div> <!-- close div id="productItem" -->
     </div><!-- close div id="product" -->
     
     <div class="right">
         <div id="submitAd">
-            <form onSubmit="return doCheck();" action="index.php?c=poem" id="addNewAd" name="addPoem" method="POST">
+            <form onSubmit="return doCheck();" action="index.php?c=ad" id="addNewAd" name="addAd" method="POST">
                 <input type="hidden" name="ac" value="addAd">
-                Title: <input type="text" name="title" id="title"/><br/>
-                Content: <br/>
-                <textarea rows="5" cols="50" name="content" id="content"></textarea>
+                <lable>Title:</lable><input type="text" name="title"/><br/>
+                <lable>URL:</lable><input type="text" name="url"/><br/>
+                <label>Description:</label><br/>
+                <textarea rows="5" cols="50" name="description"></textarea>
                 <input type="submit" value="Submit"/>
             </form>
         </div> <!-- close div id="submitAd" -->

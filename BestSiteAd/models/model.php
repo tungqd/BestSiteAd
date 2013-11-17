@@ -62,6 +62,34 @@ class Model
         }
         return $ads;
         
-    }   
+    }
+    /**
+    * Delete an ad
+    * @param $adID ID of the ad
+    * @return true if success; ortherwise, return false
+    */
+    function deleteAd($adID)
+    {
+        $query = "DELETE FROM Ads WHERE adID=$adID;";
+        if (mysqli_query($this->db, $query)) {
+            return true;
+        }
+        else return false;
+    }
+    /**
+    * Add a ad
+    * @param $title ad title
+    * @param $url ad url
+    * @param $description ad description
+    * @return true if success; ortherwise, return false
+    */
+    function addAd($title, $url, $description)
+    {
+        $query = "INSERT INTO Ads(title,url,description) VALUES('$title','$url','$description');";
+        if (mysqli_query($this->db, $query)) {
+            return true;
+        }
+        else return false;
+    }
 }
 ?>

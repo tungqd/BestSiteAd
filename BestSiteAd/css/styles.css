@@ -5,7 +5,7 @@ body, p, h1, h2, h3, h4, table, td, th, ul, ol, textarea, input
 body 
 {
     background: url(textture-noise.png);
-    overflow: hidden;
+    
     margin: 0;
     font-size: 20px;
     font-family: "Helvetica Neue", Helvetica;
@@ -21,5 +21,10 @@ body
 {
     width: 40%;
     float:right;
+}
+#product
+{
+    width: 40%;
+    float:left;
 }
 

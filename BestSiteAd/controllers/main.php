@@ -38,8 +38,8 @@ class main
         $result = array();
         foreach($array as $name => $value) {
            $result[] = $value;
-       }
-       return $result;
+        }
+        return $result;
     }
     
 

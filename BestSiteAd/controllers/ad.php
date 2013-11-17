@@ -9,35 +9,36 @@
 */
 require_once('./models/model.php');
 
-class poem
+class Ad
 {
     private $model;
     function __construct()
     {
-        $this -> model = new model();
+        $this->model = new model();
     }
     
     /**
     * Call to display Submit Poem Page or Landing Page
     */
-    function poemController()
+    function adController()
     {
-        if(isset($_GET["ac"]) && $_GET["ac"] == "uploadPoem"){
-            $_SESSION['view'] = "SubmitView";
-        } 
-        else if(isset($_POST["ac"]) && $_POST["ac"] == "addPoem"){
-            $this -> addAPoem($_POST["title"],$_POST["author"],$_POST["content"]);
-            $_SESSION['view'] = "LandingView";	        
+        if(isset($_GET["ac"]) && $_GET["ac"] == "deleteAd"){
+            $this->model->deleteAd($_GET["adID"]);
         }
+        else if(isset($_POST["ac"]) && $_POST["ac"] == "addAd"){
+            $this->addAnAd($_POST['title'],$_POST['url'],$_POST['description']);
+        }
+        $_SESSION['view'] = "LandingView"; 
         
     }
-    
     /**
-    * Add poem by calling addPoem($title, $author, $content) from Model
+    * Add an ad to database
+    * @param $title ad title
+    * @param $url ad url
+    * @param $description ad description
     */
-    function addAPoem($title, $author, $content)
-    {
-        $this->model->addPoem($title, $author, $content);
+    function addAnAd($title, $url, $description) {
+        return $this->model->addAd($title, $url, $description);
     }
 }
 ?>
