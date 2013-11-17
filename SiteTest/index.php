@@ -33,48 +33,12 @@ class BestSiteAd
     */
     function start()
     {
-
-
-        // there are 2 controllers
-        $controllers_available= array('main','poem');
-
-        //deciding the controller to be run
-        if(isset($_GET['c']) && in_array($_GET['c'],$controllers_available)){
-            if("main"==$_GET['c']){
-                $controller = "main";
-            }
-            else {
-                $controller = $_GET['c'];
-            }
-        }
-        else{
-             $controller = "main";
-        }
-
-        //function pointer to call the controller
-        $this->$controller();
-    }  
-     
-    /**
-    * main controller
-    */
-    function main()
-    {
         require_once("./controllers/main.php");
         $main = new main();
         $main->mainController();
         $this->displayView($_SESSION['view']);
-    }
-    /**
-    * poem controller
-    */
-    function poem()
-    {
-        require_once("./controllers/poem.php");
-        $poem = new Poem();
-        $poem->poemController();
-        $this->displayView($_SESSION['view']);
-    }
+    }  
+     
     
     /**
     *

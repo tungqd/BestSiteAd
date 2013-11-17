@@ -1,3 +1,5 @@
 
 Loc Dang, Tung Dang, Khanh Nguyen
 
+1/ Retrieve method name from $_SERVER['REQUEST_URI']
+2/ Print XML data in method getAD

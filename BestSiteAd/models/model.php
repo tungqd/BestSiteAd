@@ -104,6 +104,19 @@ class Model
         return $array['count'];
     }
     /**
+    * Increment counter of an ad
+    * @param $adID ID of the ad
+    * @return true if success; ortherwise, return false
+    */
+    function incCounter($adID)
+    {
+        $query = "UPDATE Counter SET count=count+1 WHERE adID=$adID";
+        if (mysqli_query($this->db, $query)) {
+            return true;
+        }
+        else return false;
+    }
+    /**
     * Reset counter 
     * @return true if success; ortherwise, return false
     */

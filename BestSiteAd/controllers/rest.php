@@ -23,8 +23,15 @@ class Rest
     */
     function restController($method)
     {
-        if($method == "getad") {
-            $this->getAd();
+        $req = $_REQUEST;
+        switch ($method)
+        {
+            case "get-ad":
+                $this->getAd();
+                break;
+            case "increment-choice":
+                $this->incrementChoice($req['adID']);
+                break;
         }
     }
     /**
@@ -51,6 +58,13 @@ class Rest
         }
         header('Content-type: text/xml');
         print $xml->asXML();
+    }
+    /**
+    *
+    */
+    function incrementChoice($adID)
+    {
+        $this->model->incCounter($adID);
     }
 }
 ?>

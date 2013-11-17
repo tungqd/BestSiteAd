@@ -22,27 +22,6 @@ class main
         $this->model = new model();   
     }
     /**
-    * Get an ad from REST API
-    * @return associative array containing title, url, description of the ad
-    */
-    function getAd()
-    {
-        $curl = curl_init();
-        $url = "http://localhost/CS174/Hw4/BestSiteAd/index.php/getad/?format=xml";
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $result = curl_exec($curl);
-        
-        $xml = simplexml_load_string($result);
-        $result = array();
-        $result['title'] = $xml->title;
-        $result['url'] = $xml->url;
-        $result['description'] = $xml->description;
-        curl_close($curl);
-        
-        return $result;
-    }
-    /**
     *
     * Main controller
     */
@@ -50,6 +29,9 @@ class main
     {
         $array = $this -> getTen();
         $_SESSION['view'] = "SiteTestView";
+        if (isset($_GET['ac']) && $_GET['ac'] == "adclick") {
+            $this->adClick($_GET['adID']);
+        }
 
     }
     function getTen()
@@ -60,6 +42,42 @@ class main
            $result[] = $value;
         }
         return $result;
+    }
+    /**
+    * Get an ad from REST API
+    * @return associative array containing adID, title, url, description of the ad
+    */
+    function getAd()
+    {
+        $curl = curl_init();
+        $url = "http://localhost/CS174/Hw4/BestSiteAd/index.php/get-ad/?format=xml";
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($curl);
+        
+        $xml = simplexml_load_string($result);
+        $result = array();
+        $result['adID'] = $xml->adID;
+        $result['title'] = $xml->title;
+        $result['url'] = $xml->url;
+        $result['description'] = $xml->description;
+        curl_close($curl);
+        
+        return $result;
+    }
+    /**
+    * increment ad counter by 1 when the ad is clicked
+    * @param $adID ID of the ad
+    * 
+    */
+    function adClick($adID)
+    {
+        $curl = curl_init();
+        $url = "http://localhost/CS174/Hw4/BestSiteAd/index.php/increment-choice/?adID=".$adID;
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($curl);
+        curl_close($curl);
     }
 }
 ?>
