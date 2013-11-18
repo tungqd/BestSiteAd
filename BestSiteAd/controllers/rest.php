@@ -44,7 +44,9 @@ class Rest
     function getAd($format)
     {
         $array =$this->model->getRandomAd();
-        $xml= new SimpleXMLElement("<ad></ad>");
+        $preample = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+        $preample .= "<!DOCTYPE ad SYSTEM \"ad.dtd\">";
+        $xml = new SimpleXMLElement("$preample<ad></ad>");
         foreach($array as $key => $value) {
         if(is_array($value)) {
             if(!is_numeric($key)){
@@ -61,9 +63,8 @@ class Rest
         }
         }
         if ($format == "xml") 
-        {
-            
-            header('Content-type: text/xml');
+        {   
+            header('Content-type: text/xml; charset=utf-8');
             print $xml->asXML();        
         }
         else if ($format == "json")
