@@ -52,7 +52,6 @@ class SiteTestView
                 <meta name="description" content="A showcase site using 
                                     REST-based advertising web service." />
                 <meta name="keywords" content="HW4, ad, product" />
-                <meta http-equiv="Content-Type" content="application/xhtml+xml"/> 
                 <meta charset="utf-8" />
                 <meta name="ROBOTS" content="NOINDEX, NOFOLLOW"/>
                 <link rel="stylesheet" type="text/css" href="./css/styles.css"/>
@@ -107,8 +106,8 @@ class SiteTestView
                                 document.getElementById("adLink").
                                     innerHTML=title;
                                 document.getElementById("adLink").
-                                href='index.php?c=main&ac=adclick&adID='+adID+
-                                '&url='+url;
+                                href="index.php?c=main&ac=adclick&adID="+adID+
+                                "&url="+url;
                                 document.getElementById("description").
                                     innerHTML=description;
                             }
@@ -145,8 +144,7 @@ class SiteTestView
                                 <?php }
                             ?>
                                 <div class="news">       
-                                <a href="index.php?c=main&amp;ac=adclick&amp;
-                                adID=0&amp;url=<?php echo $tenItems['url'];?>">
+                                <a href='index.php?c=main&amp;ac=adclick&amp;adID=0&amp;url=<?php echo mysql_real_escape_string($tenItems['url']);?>'>
                                     <?php echo $tenItems['title'];?></a><br/>
                                 <?php echo $tenItems['content'];?><br>  
                                 </div> <!-- close div class="news"-->
