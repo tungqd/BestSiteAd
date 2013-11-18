@@ -14,7 +14,7 @@ class SiteTestView
     {    
         $this->controller = new main();
     }
-   
+
     /**
     * Display 10 news items
     */
@@ -27,6 +27,7 @@ class SiteTestView
     {
         return $this->controller->getAd();
     }
+<<<<<<< HEAD
 }
     $obj = new SiteTestView();
 
@@ -61,3 +62,79 @@ class SiteTestView
         
     </div> <!-- close div class="tenNewsItem"-->
 </div> <!-- close div id="wrapper"-->
+=======
+
+    /**
+    *
+    * displayView renders and displays specific view
+    * @params $viewname view to be displayed
+    */
+    function displayView()
+    {
+    ?>
+        <!DOCTYPE HTML>
+        <html>
+            <head>
+                <title>SiteTest</title>
+                <meta name="author" content="Tung Dang, Loc Dang, Khanh Nguyen" />
+                <meta name="description" content="A showcase site using 
+                                    REST-based advertising web service." />
+                <meta name="keywords" content="HW4, ad, product" />
+                <meta http-equiv="Content-Type" 
+                        content="application/xhtml+xml; charset=UTF-8" />
+                <meta name="ROBOTS" content="NOINDEX, NOFOLLOW"/>
+                <link rel="stylesheet" type="text/css" 
+                        href="./css/styles.css" />
+                <script type="text/javascript">
+                function loadAd()
+                {
+                    alert("load");
+                    var ad=document.getElementById("advertisement");
+                     
+                }
+                </script>
+
+            </head>
+
+            <body onload="loadAd()">
+                <h1><a href="index.php"><?php echo SITENAME; ?></a></h1>
+                <b class="highest">10 random news items</b><br/><br/>
+                <div id="wrapper" class="siteTest">
+                    <div class="tenNewsItem"> 
+                            <?php
+                                $tenArray = $this->displayTenNews();
+                                foreach ($tenArray as $key=>$tenItems) {
+                                if ($key == 1) {
+                                    ?><div id="advertisement">
+                                        <?php
+                                           $ad = $this->displayAd();
+                                        ?>
+                                            <a href="index.php?c=main
+                                            &amp;ac=adclick
+                                            &amp;adID=
+                                                    <?php echo $ad['adID'];?>">
+                                            <?php echo $ad['title'];?></a><br/>
+                                            <?php echo $ad['description'];?>
+                                    </div>
+                                <?php }
+                            ?>
+                                <div id="news">       
+                                <a href="index.php">
+                                    <?php echo $tenItems['title'];?></a><br/>
+                                <?php echo $tenItems['content'];?><br>  
+                                </div> <!-- close div id="news"-->
+                            <?php 
+                                }
+                            ?>
+                        
+                    </div> <!-- close div class="tenNewsItem"-->
+                </div> <!-- close div id="wrapper"-->
+            </body>
+        </html>
+    <?php
+    }
+}
+    $obj = new SiteTestView();
+    $obj->displayView();
+?>
+>>>>>>> bf51e3e910961e865a1203fd9e47d1882f7d1cee
