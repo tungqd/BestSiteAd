@@ -22,6 +22,7 @@
     $query .= "INSERT INTO ads(title, url, description) VALUES ('First ad','www.somewhere1.com','First ad ever!');";
     $query .= "INSERT INTO ads(title, url, description) VALUES ('Second ad','www.somewhere2.com','Here is second ad!');";
     $query .= "INSERT INTO ads(title, url, description) VALUES ('Third ad','www.somewhere3.com','This is the third ad!');";
+    $query .= "INSERT INTO Counter(adID,count) VALUES('0','0');";
     $query .= "INSERT INTO Counter(adID,count) VALUES('1','0');";
     $query .= "INSERT INTO Counter(adID,count) VALUES('2','0');";
     $query .= "INSERT INTO Counter(adID,count) VALUES('3','0');";

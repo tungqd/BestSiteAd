@@ -34,6 +34,11 @@ class LandingView
 <h1><a href="index.php"><?php echo SITENAME; ?></a></h1>
 <div id="wrapper" class="landingPage">
     <div class="ads">
+        <div class="dummyAd">
+            <label><strong>Title:</strong>News Story</label><br/>
+            <label><strong>Description:</strong>Actual news story</label><br/>
+            <label><strong>Number of clicks:</strong></label><?php echo $obj->getCount(0);?>
+        </div>
         <?php
             $ads = $obj->displayAd();
             foreach($ads as $ad) {
