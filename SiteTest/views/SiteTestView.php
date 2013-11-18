@@ -54,7 +54,7 @@ class SiteTestView
                         var link = document.getElementById("adLink");
                         var description = document.getElementById("description");
                         link.innerHTML="<?php echo $ad['title'];?>";
-                        link.href="<?php echo $ad['url'];?>";
+                        link.href='index.php?c=main&ac=adclick&adID=<?php echo $ad['adID'];?>&url=<?php echo $ad['url'];?>';
                         description.innerHTML="<?php echo $ad['description'];?>";                  
                     }                
                 </script>
