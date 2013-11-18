@@ -18,7 +18,7 @@
     $query .= "INSERT INTO News(title,url,content) VALUES ('Tablo', 'http://www.engadget.com/2013/11/16/tablo-hands-on/', 'a DVR that streams over-the-air TV nearly anywhere');";
     $query .= "INSERT INTO News(title,url,content) VALUES ('Quantum Computing', 'http://www.engadget.com/2013/11/16/oxford-university-scientists-break-qubit-survival-record-are-on/', 'Experiment brings quantum computing a step closer to reality');";
     $query .= "INSERT INTO News(title,url,content) VALUES ('Twitter', 'http://www.engadget.com/2013/11/16/twitter-alpha-beta-android-app-design/', 'Twitter scraps Android app redesign previewed to testers');";
-    $query .= "INSERT INTO News(title,url,content) VALUES ('LG Flex', 'Twitter scraps Android app redesign previewed to testers, concocts a hybrid interface', 'LG G Flex appears on the FCC with AT&T-friendly LTE');";
+    $query .= "INSERT INTO News(title,url,content) VALUES ('LG Flex', 'http://www.engadget.com/2013/11/15/lg-g-flex-att-lte/', 'LG G Flex appears on the FCC with AT&T-friendly LTE');";
     $query .= "INSERT INTO News(title,url,content) VALUES ('London', 'http://www.engadget.com/2013/11/15/london-city-tld/', 'London becomes the latest city to get its own top-level domain');";
     $query .= "INSERT INTO News(title,url,content) VALUES ('Adobe Reader', 'http://www.engadget.com/2013/11/15/adobe-reader-pdf-conversion-android/', 'Update for Android adds costly PDF conversion features');";
     $query .= "INSERT INTO News(title,url,content) VALUES ('Galaxy Gear', 'http://www.engadget.com/2013/11/15/almost-all-of-your-notifications-can-now-display-on-galaxy-gear/','Almost all of your notifications can now display.');";
