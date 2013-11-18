@@ -15,14 +15,21 @@ class LandingView
     }
 
     /**
-    * Display featured poem. 
-    * If the time interval is greater than 10 minutes, display another poem.
+    * Display ads. 
+    * Call getAllAds() function of main controller
+    * @return array of ads
     */
     function displayAd()
     {
         $result = $this->controller->getAllAds();
         return $result;
     }
+    
+    /**
+    * Get counter
+    * @param $adID ID of an ad
+    * @return counter of an ad
+    */
     function getCount($adID)
     {
         return $count = $this->controller->getClicks($adID);
@@ -37,27 +44,35 @@ class LandingView
         <div class="dummyAd">
             <label><strong>Title: </strong>News Story</label><br/>
             <label><strong>Description: </strong>Actual news story</label><br/>
-            <label><strong>Number of clicks: </strong></label><?php echo $obj->getCount(0);?>
+            <label><strong>Number of clicks: </strong></label>
+                            <?php echo $obj->getCount(0);?>
         </div>
         <?php
             $ads = $obj->displayAd();
             foreach($ads as $ad) {
                 $count = $obj->getCount($ad['adID']);
         ?>
-            <div class="adItem">
-            <label><strong>Title: </strong></label><?php echo $ad['title']; ?><br/>
-            <label><strong>URL: </strong></label><a href="<?php echo $ad['url'];?>"><?php echo $ad['url'];?></a><br/>
-            <label><strong>Description: </strong></label><?php echo $ad['description'];?><br/>
-            <label><strong>Number of clicks: </strong></label><?php echo $count;?><br/>
-            <a href="index.php?c=ad&amp;ac=deleteAd&amp;adID=<?php echo $ad['adID'];?>">Delete Ad</a><br/>
-            </div><!-- close div id="adItem" -->
+        <div class="adItem">
+            <label><strong>Title: </strong></label>
+                            <?php echo $ad['title']; ?><br/>
+            <label><strong>URL: </strong></label>
+            <a href="<?php echo $ad['url'];?>"><?php echo $ad['url'];?></a><br/>
+            <label><strong>Description: </strong></label>
+                            <?php echo $ad['description'];?><br/>
+            <label><strong>Number of clicks: </strong></label>
+                            <?php echo $count;?><br/>
+            <a href="index.php?c=ad&amp;ac=deleteAd&amp;
+                            adID=<?php echo $ad['adID'];?>">Delete Ad</a><br/>
+        </div><!-- close div id="adItem" -->
         <?php
         }
         ?>
-    </div><!-- close div id="ads" --> 
+    </div><!-- close div class="ads" --> 
+    
     <div class="right">
         <div id="submitAd">
-            <form onSubmit="return doCheck();" action="index.php?c=ad" id="addNewAd" name="addAd" method="POST">
+            <form onSubmit="return doCheck();" 
+            action="index.php?c=ad" id="addNewAd" name="addAd" method="POST">
                 <input type="hidden" name="ac" value="addAd">
                 <label>Title:</label><input type="text" name="title"/><br/>
                 <label>URL:</label><input type="text" name="url"/><br/>
@@ -74,7 +89,8 @@ class LandingView
 
 <script type="text/javascript">
 /**
-* Javascript function doCheck() checks for non-null input when submitting new ad.
+* Javascript function doCheck() checks for non-null input 
+* when submitting new ads.
 * 
 */
     function doCheck()
@@ -92,7 +108,6 @@ class LandingView
             return false;
         }
         
-        
         else if (titleLength > 0)
         {
             /* Null input for author */
@@ -105,4 +120,3 @@ class LandingView
         return true;
     }
 </script>
-

@@ -1,8 +1,8 @@
 <?php
 /**
-* poem.php
+* ad.php
 * 
-* Poem controller handles adding poem
+* Ad controller handles adding advertisement.
 * @author   Tung Dang, Loc Dang, Khanh Nguyen
 *
 *
@@ -18,7 +18,7 @@ class Ad
     }
     
     /**
-    * Call to display Submit Poem Page or Landing Page
+    * Call to display Submit Ad or Delete Ad
     */
     function adController()
     {
@@ -36,6 +36,7 @@ class Ad
     * @param $title ad title
     * @param $url ad url
     * @param $description ad description
+    * Call addAd function of model
     */
     function addAnAd($title, $url, $description) {
         return $this->model->addAd($title, $url, $description);

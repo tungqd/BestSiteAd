@@ -14,7 +14,8 @@ class Model
      */
     function __construct() 
     {
-        $this->db = @mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE) or die('Could not connect to MySQL:'.mysqli_connect_error($this->db));
+        $this->db = @mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE) 
+        or die('Could not connect to MySQL:'.mysqli_connect_error($this->db));
         mysqli_set_charset($this->db, 'uft8');
     }
     
@@ -85,12 +86,14 @@ class Model
     */
     function addAd($title, $url, $description)
     {
-        $query = "INSERT INTO Ads(title,url,description) VALUES('$title','$url','$description');";
+        $query = "INSERT INTO Ads(title,url,description) 
+                        VALUES('$title','$url','$description');";
         if (mysqli_query($this->db, $query)) {
             return true;
         }
         else return false;
     }
+    
     /**
     * Get number of clicks for an add
     * @param $adID ID of the ad
@@ -103,6 +106,7 @@ class Model
         $array = mysqli_fetch_array($result, MYSQLI_ASSOC);
         return $array['count'];
     }
+    
     /**
     * Increment counter of an ad vulnerably
     * Set to mysqli_multi_query to demonstrate the inject attack
@@ -117,6 +121,7 @@ class Model
         }
         else return false;
     }
+    
     /**
     * Increment counter of an ad vulnerably
     * Set to mysqli_multi_query to demonstrate the inject attack
@@ -127,15 +132,13 @@ class Model
     function incCounter($adID)
     {
         // Stripslashes
-        if (get_magic_quotes_gpc())
-          {
-          $goodID = stripslashes($adID);
-          }
+        if (get_magic_quotes_gpc()) {
+            $goodID = stripslashes($adID);
+        }
         // Quote if not a number
-        if (!is_numeric($adID))
-          {
-          $goodID = "'" . mysql_real_escape_string($adID) . "'";
-          }
+        if (!is_numeric($adID)) {
+            $goodID = "'" . mysql_real_escape_string($adID) . "'";
+        }
         
         $query = "UPDATE Counter SET count=count+1 WHERE adID=$goodID;";
         if (mysqli_multi_query($this->db, $query)) {

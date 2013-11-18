@@ -18,6 +18,7 @@ class BestSiteAd
     {
         require_once('./config/config.php');
     }
+    
     /**
     *
     * render function
@@ -27,10 +28,12 @@ class BestSiteAd
     {
         require_once("./views/{$viewname}.php");
     }
+    
     /**
     *
     * Get method name from REST services call
-    * @return $method name of method to be called or 0 if no method and arg is detected
+    * @return $method name of method to be called 
+    * or 0 if no method and arg is detected
     */
     function getMethod()
     {
@@ -44,10 +47,12 @@ class BestSiteAd
             else {
                 return null;
             }
-        } else {
+        } 
+        else {
             return null;
         }
     }
+    
     /**
     * Calls appropriate controllers
     */
@@ -67,7 +72,7 @@ class BestSiteAd
                 $controller = $_GET['c'];
             }
         }
-        else{
+        else {
              $controller = "main";
         }
 
@@ -77,6 +82,7 @@ class BestSiteAd
      
     /**
     * main controller
+    * @return Call displayView() function
     */
     function main()
     {
@@ -85,8 +91,10 @@ class BestSiteAd
         $main->mainController();
         $this->displayView($_SESSION['view']);
     }
+    
     /**
     * ad controller
+    * @return Call ad controller
     */
     function ad()
     {
@@ -95,8 +103,10 @@ class BestSiteAd
         $ad->adController();
         $this->displayView($_SESSION['view']);
     }
+    
     /**
     * rest controller
+    * @return Call REST controller
     */
     function rest()
     {
@@ -119,12 +129,14 @@ class BestSiteAd
         <html>
             <head>
                 <title>Best Site Ad</title>
-                <meta name="author" content="Tung Dang, Loc Dang, Khanh Nguyen" />
-                <meta name="description" content="A site provides REST services" />
+                <meta name="author" 
+                            content="Tung Dang, Loc Dang, Khanh Nguyen"/>
+                <meta name="description" 
+                            content="A site provides REST services" />
                 <meta name="keywords" content="HW4, items, ad, rest, api" />
                 <meta charset="utf-8" />
                 <meta name="ROBOTS" content="NOINDEX, NOFOLLOW"/>
-                <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+                <link rel="stylesheet" type="text/css" href="./css/styles.css"/>
             </head>
             
             <body>
@@ -139,4 +151,3 @@ class BestSiteAd
 $siteAd_obj = new BestSiteAd();
 $siteAd_obj->start(); 
 ?>
-
