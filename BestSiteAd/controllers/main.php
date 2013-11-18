@@ -25,6 +25,7 @@ class main
     /**
     *
     * Main controller
+    * Call to display Landing Page or handles reset counter
     */
     function mainController()
     {
@@ -34,6 +35,11 @@ class main
         $_SESSION['view'] = "LandingView";
 
     }
+    
+    /**
+    * Get all ads by calling getAds function of model
+    * @return array of ads
+    */
     function getAllAds()
     {
         $array = $this->model->getAds();
@@ -43,15 +49,25 @@ class main
         }
         return $result;
     }
+    
+    /**
+    * Get number of clicks for an ad
+    * @param adID ID of an ad
+    * @return an ad's counter
+    */
     function getClicks($adID)
     {
         $counter = $this->model->getCounter($adID);
         return $counter;
     }
+    
+    /**
+    * Reset counter 
+    * @return Calling resetCounter() function of model
+    */
     function resetClicks()
     {
         return $this->model->resetCounter();
     }
-
 }
 ?>

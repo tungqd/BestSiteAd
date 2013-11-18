@@ -1,8 +1,8 @@
 <?php
 /**
-* poem.php
+* rest.php
 * 
-* Poem controller handles adding poem
+* REST Service controller handles getting ads and increment counters
 * @author   Tung Dang, Loc Dang, Khanh Nguyen
 *
 *
@@ -11,7 +11,6 @@ require_once('./models/model.php');
 
 class Rest
 {
-
     private $model;
     function __construct()
     {
@@ -19,7 +18,9 @@ class Rest
     }
     
     /**
-    * Call to display Submit Poem Page or Landing Page
+    * Call appropriate functions based on method name
+    * @param method Name of method desired
+    * 
     */
     function restController($method)
     {
@@ -39,6 +40,7 @@ class Rest
     }
     /**
     * Get ad method 
+    * @param format Document type
     * @return ad data in either XML or JSON
     */
     function getAd($format)
@@ -48,40 +50,45 @@ class Rest
         $preample .= "<!DOCTYPE ad SYSTEM \"ad.dtd\">";
         $xml = new SimpleXMLElement("$preample<ad></ad>");
         foreach($array as $key => $value) {
-        if(is_array($value)) {
-            if(!is_numeric($key)){
-                $subnode = $xml->addChild("$key");
-                array_to_xml($value, $subnode);
-            }
-            else{
-                $subnode = $xml->addChild("item$key");
-                array_to_xml($value, $subnode);
-            }
-        }
-        else {
+            if(is_array($value)) {
+                if(!is_numeric($key)){
+                    $subnode = $xml->addChild("$key");
+                    array_to_xml($value, $subnode);
+                }
+                else{
+                    $subnode = $xml->addChild("item$key");
+                    array_to_xml($value, $subnode);
+                }
+            } else {
             $xml->addChild("$key","$value");
-        }
+            }
         }
         if ($format == "xml") 
         {   
             header('Content-type: text/xml; charset=utf-8');
             print $xml->asXML();        
         }
-        else if ($format == "json")
-        {
+        else if ($format == "json"){
             header('Content-type: application/json; charset=utf-8');
             print json_encode($xml);   
         }
-
     }
+    
     /**
-    *
+    * Increment counter of an ad when it is clicked
+    * @param adID ID of an ad
+    * @return Call incCounter() function of model
     */
     function incrementChoice($adID)
     {
         $this->model->incCounter($adID);
     }
     
+    /**
+    * Increment counter which is vulnerable to SQL injection attack
+    * @param adID ID of an ad
+    * @return Call incCounterVul() function of model
+    */
      function incrementVul($adID)
      {
          $this->model->incCounterVul($adID);
