@@ -24,17 +24,19 @@ body
 .tenNewsItem
 {
     margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
 #news
 {
-    width: 100%;    
+    width: 90%;    
     border: 1px solid black;
     overflow-y: auto;
     
 }
 #advertisement
 {
-    width: 100%;
+    width: 90%;
     border: 1px dashed blue;
     background-color: LightGray;
     overflow-y: auto;

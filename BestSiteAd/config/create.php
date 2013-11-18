@@ -22,10 +22,12 @@
     $query .= "INSERT INTO ads(title, url, description) VALUES ('MacBook Air','http://www.apple.com/macbook-air/','All the power you want. All day.');";
     $query .= "INSERT INTO ads(title, url, description) VALUES ('MacBook Pro','http://www.apple.com/macbook-pro/','More power behind every pixel.');";
     $query .= "INSERT INTO ads(title, url, description) VALUES ('Mac Mini','http://www.apple.com/mac-mini/','Now up to twice as fast');";
+    $query .= "INSERT INTO ads(title, url, description) VALUES ('Mac Pro','http://www.apple.com/mac-pro/','Built for creativity an an epic scale.');";
     $query .= "INSERT INTO Counter(adID,count) VALUES('0','0');";
     $query .= "INSERT INTO Counter(adID,count) VALUES('1','0');";
     $query .= "INSERT INTO Counter(adID,count) VALUES('2','0');";
     $query .= "INSERT INTO Counter(adID,count) VALUES('3','0');";
+    $query .= "INSERT INTO Counter(adID,count) VALUES('4','0');";
     if (mysqli_multi_query($db,$query)) {
         echo "Database and Schemas for $database created successfully.";
     } 

@@ -35,9 +35,9 @@ class LandingView
 <div id="wrapper" class="landingPage">
     <div class="ads">
         <div class="dummyAd">
-            <label><strong>Title:</strong>News Story</label><br/>
-            <label><strong>Description:</strong>Actual news story</label><br/>
-            <label><strong>Number of clicks:</strong></label><?php echo $obj->getCount(0);?>
+            <label><strong>Title: </strong>News Story</label><br/>
+            <label><strong>Description: </strong>Actual news story</label><br/>
+            <label><strong>Number of clicks: </strong></label><?php echo $obj->getCount(0);?>
         </div>
         <?php
             $ads = $obj->displayAd();
@@ -45,9 +45,10 @@ class LandingView
                 $count = $obj->getCount($ad['adID']);
         ?>
             <div class="adItem">
-            <label><strong>Title:</strong></label><?php echo $ad['title']; ?><br/>
-            <label><strong>Description:</strong></label><?php echo $ad['description'];?><br/>
-            <label><strong>Number of clicks:</strong></label><?php echo $count;?><br/>
+            <label><strong>Title: </strong></label><?php echo $ad['title']; ?><br/>
+            <label><strong>URL: </strong></label><a href="<?php echo $ad['url'];?>"><?php echo $ad['url'];?></a><br/>
+            <label><strong>Description: </strong></label><?php echo $ad['description'];?><br/>
+            <label><strong>Number of clicks: </strong></label><?php echo $count;?><br/>
             <a href="index.php?c=ad&ac=deleteAd&adID=<?php echo $ad['adID'];?>">Delete Ad</a><br/>
             </div><!-- close div id="adItem" -->
         <?php

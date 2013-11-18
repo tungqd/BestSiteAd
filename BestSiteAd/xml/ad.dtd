@@ -1,3 +1,4 @@
+<!-- Modify the line below to corresponding path to validate XML data-->
 <!ATTLIST ad xmlns CDATA "http://www.localhost/CS174/Hw4/BestSiteAd/index.php/get-ad/?format=xml">
 <!ELEMENT ad (id, title, url, description)>
 <!ELEMENT id (#PCDATA)>

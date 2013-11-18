@@ -38,7 +38,8 @@ class Rest
         }
     }
     /**
-    * Get ad method
+    * Get ad method 
+    * @return ad data in either XML or JSON
     */
     function getAd($format)
     {

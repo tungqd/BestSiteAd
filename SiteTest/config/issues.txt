@@ -3,3 +3,4 @@ Loc Dang, Tung Dang, Khanh Nguyen
 
 1/ Unable to retrieve data from REST api
 2/ Redirect to real url after calling Rest services
+3/ Use of proxy for Javascript onload() function in view

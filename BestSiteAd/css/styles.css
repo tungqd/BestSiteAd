@@ -29,10 +29,12 @@ body
 }
 .adItem
 {
-    border: 1px dotted black;
+    margin-left: 10px;
+    border: 2px dotted black;
     background-color: LightGray;
 }
 .dummyAd
 {
+    margin-left: 10px;
     border: 1px dotted black;
 }

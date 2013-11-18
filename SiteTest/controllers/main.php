@@ -42,6 +42,10 @@ class main
         
 
     }
+    /**
+    * Get ten random news from model
+    * @return associative array
+    */
     function getTen()
     {
         $array = $this->model->getTenRandom();
@@ -53,9 +57,10 @@ class main
     }
     /**
     * Get an ad from REST API
+    * function can be used to get ad data if not using proxy
     * @return associative array containing adID, title, url, description of the ad
     */
-    function getAd()
+    /*function getAd()
     {
         $curl = curl_init();
         $url = GETAD_URL.FORMAT;
@@ -83,7 +88,7 @@ class main
             return $response;
         }
         
-    }
+    }*/
     /**
     * increment ad counter by 1 when the ad is clicked
     * @param $adID ID of the ad
@@ -99,8 +104,9 @@ class main
         curl_close($curl);
     }
     /**
-    *
-    *
+    * Perform redirection
+    * @param $url to be redirected to
+    * @param $statusCode statusCode
     */
     function redirect($url, $statusCode = 303)
     {
