@@ -44,7 +44,7 @@ class SiteTestView
                         <?php
                            $ad = $obj->displayAd();
                         ?>
-                            <a href="index.php?c=main&amp;ac=adclick&amp;adID=<?php echo $ad['adID'];?>">
+                            <a href="index.php?c=main&amp;ac=adclick&amp;adID=<?php echo $ad['adID'];?>&amp;url=<?php echo $ad['url'];?>">
                             <?php echo $ad['title'];?></a><br/>
                             <?php echo $ad['description'];?>
                     </div>

@@ -19,9 +19,9 @@
     $query .= "DROP TRIGGER IF EXISTS addCounter;";
     $query .= "CREATE TRIGGER addCounter AFTER INSERT ON Ads FOR EACH ROW INSERT INTO Counter(adID,count) VALUES (New.adID, 0);";
     //add initial data
-    $query .= "INSERT INTO ads(title, url, description) VALUES ('First ad','www.somewhere1.com','First ad ever!');";
-    $query .= "INSERT INTO ads(title, url, description) VALUES ('Second ad','www.somewhere2.com','Here is second ad!');";
-    $query .= "INSERT INTO ads(title, url, description) VALUES ('Third ad','www.somewhere3.com','This is the third ad!');";
+    $query .= "INSERT INTO ads(title, url, description) VALUES ('MacBook Air','http://www.apple.com/macbook-air/','All the power you want. All day.');";
+    $query .= "INSERT INTO ads(title, url, description) VALUES ('MacBook Pro','http://www.apple.com/macbook-pro/','More power behind every pixel.');";
+    $query .= "INSERT INTO ads(title, url, description) VALUES ('Mac Mini','http://www.apple.com/mac-mini/','Now up to twice as fast');";
     $query .= "INSERT INTO Counter(adID,count) VALUES('0','0');";
     $query .= "INSERT INTO Counter(adID,count) VALUES('1','0');";
     $query .= "INSERT INTO Counter(adID,count) VALUES('2','0');";

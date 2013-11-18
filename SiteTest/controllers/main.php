@@ -31,6 +31,7 @@ class main
         $_SESSION['view'] = "SiteTestView";
         if (isset($_GET['ac']) && $_GET['ac'] == "adclick") {
             $this->adClick($_GET['adID']);
+            $this->redirect($_GET['url'], 303);
         }
 
     }
@@ -50,7 +51,7 @@ class main
     function getAd()
     {
         $curl = curl_init();
-        $url = "http://localhost/CS174/Hw4/BestSiteAd/index.php/get-ad/?format=".FORMAT;
+        $url = GETAD_URL.FORMAT;
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($curl);
@@ -84,11 +85,20 @@ class main
     function adClick($adID)
     {
         $curl = curl_init();
-        $url = "http://localhost/CS174/Hw4/BestSiteAd/index.php/increment-choice/?adID=".$adID;
+        $url = INCRE_URL.$adID;
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($curl);
         curl_close($curl);
+    }
+    /**
+    *
+    *
+    */
+    function redirect($url, $statusCode = 303)
+    {
+       header('Location: ' . $url, true, $statusCode);
+       die();
     }
 }
 ?>
