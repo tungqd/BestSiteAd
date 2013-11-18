@@ -22,13 +22,14 @@ class main
     {
         $this->model = new model();   
     }
+    
     /**
     *
     * Main controller
+    * Call to ad click or inject
     */
     function mainController()
     {
-        
         $array = $this -> getTen();
         $_SESSION['view'] = "SiteTestView";
         if (isset($_GET['ac']) && $_GET['ac'] == "adclick") {
@@ -40,7 +41,6 @@ class main
         }
         $view = new SiteTestView();
         
-
     }
     /**
     * Get ten random news from model
@@ -55,6 +55,7 @@ class main
         }
         return $result;
     }
+    
     /**
     * Get an ad from REST API
     * function can be used to get ad data if not using proxy
@@ -89,10 +90,11 @@ class main
         }
         
     }*/
+    
     /**
-    * increment ad counter by 1 when the ad is clicked
+    * Increment ad counter by 1 when the ad is clicked
     * @param $adID ID of the ad
-    * 
+    * @return Increment ad counter by 1 when ad is clicked
     */
     function adClick($adID)
     {
@@ -103,6 +105,7 @@ class main
         $result = curl_exec($curl);
         curl_close($curl);
     }
+    
     /**
     * Perform redirection
     * @param $url to be redirected to
@@ -114,6 +117,9 @@ class main
        die();
     }
     
+    /**
+    * Perform SQL injection    *
+    */
     function inject()
     {
         $curl = curl_init();

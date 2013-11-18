@@ -2,7 +2,8 @@ body, p, h1, h2, h3, h4, table, td, th, ul, ol, textarea, input
 {
     font-family: helvetica,verdana,arial,sans-serif;
 }
-body 
+
+body
 {
     background: url(textture-noise.png); 
     margin: 0;
@@ -27,18 +28,18 @@ body
     margin-right: 20px;
     margin-bottom: 20px;
 }
+
 .news
 {
     width: 90%;    
     border: 1px solid black;
     overflow-y: auto;
-    
 }
+
 #advertisement
 {
     width: 90%;
     border: 1px dashed blue;
     background-color: LightGray;
     overflow-y: auto;
-    
 }

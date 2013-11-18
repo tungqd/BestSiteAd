@@ -13,16 +13,14 @@ curl_setopt($curl, CURLOPT_URL, $url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $result = curl_exec($curl);
     
-if (FORMAT == "xml")
-{            
+if (FORMAT == "xml") {            
     $xml = simplexml_load_string($result);
     header('Content-type: text/xml');
     print $xml->asXML();  
     curl_close($curl);  
     
 }
-else if (FORMAT== "json")
-{
+else if (FORMAT== "json") {
     $response = json_decode($result,true);
     $xml= new SimpleXMLElement("<ad></ad>");  
     foreach($response as $key => $value) {
@@ -39,13 +37,12 @@ else if (FORMAT== "json")
         else {
             $xml->addChild("$key","$value");
         }
-        }
+    }
     header('Content-type: text/xml');
     print $xml->asXML();  
     curl_close($curl); 
 }
-else
-{
+else {
     echo "Failed";
 }
 ?>
