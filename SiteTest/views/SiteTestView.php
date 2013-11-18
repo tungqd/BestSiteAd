@@ -41,9 +41,26 @@ class SiteTestView
                 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
                 <meta name="ROBOTS" content="NOINDEX, NOFOLLOW"/>
                 <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+                
+                <script type="text/javascript">
+                    /**
+                    *
+                    * loadAd functions gets ad's data from controller then displays in div id="advertisement"
+                    */  
+                    function loadAd()
+                    {
+                        <?php $ad = $this->displayAd();?>  
+                        var ad = document.getElementById("advertisement");
+                        var link = document.getElementById("adLink");
+                        var description = document.getElementById("description");
+                        link.innerHTML="<?php echo $ad['title'];?>";
+                        link.href="<?php echo $ad['url'];?>";
+                        description.innerHTML="<?php echo $ad['description'];?>";                  
+                    }                
+                </script>
             </head>
             
-            <body>
+            <body onload="loadAd()">
                 <h1><a href="index.php"><?php echo SITENAME; ?></a></h1>
                 <b class="highest">10 random news items</b><br/><br/>
                 <div id="wrapper" class="siteTest">
@@ -53,12 +70,8 @@ class SiteTestView
                                 foreach ($tenArray as $key=>$tenItems) {
                                 if ($key == 1) {
                                     ?><div id="advertisement">
-                                        <?php
-                                           $ad = $this->displayAd();
-                                        ?>
-                                            <a href="index.php?c=main&amp;ac=adclick&amp;adID=<?php echo $ad['adID'];?>&amp;url=<?php echo $ad['url'];?>">
-                                            <?php echo $ad['title'];?></a><br/>
-                                            <?php echo $ad['description'];?>
+                                        <a id="adLink"></a>
+                                        <p id="description"></p>
                                     </div>
                                 <?php }
                             ?>
