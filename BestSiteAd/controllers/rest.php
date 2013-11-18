@@ -32,9 +32,6 @@ class Rest
             case "increment-choice":
                 $this->incrementChoice($req['adID']);
                 break;
-            case "increment-vulnerable":
-                $this->incrementVul($req['sql']);
-                break;
         }
     }
     /**
@@ -78,11 +75,6 @@ class Rest
     function incrementChoice($adID)
     {
         $this->model->incCounter($adID);
-    }
-    
-    function incrementVul($sql)
-    {
-    		$this->model->attack($sql);
     }
 }
 ?>
