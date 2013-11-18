@@ -104,18 +104,46 @@ class Model
         return $array['count'];
     }
     /**
-    * Increment counter of an ad
+    * Increment counter of an ad vulnerably
+    * Set to mysqli_multi_query to demonstrate the inject attack
+    * @param $adID ID of the ad
+    * @return true if success; ortherwise, return false
+    */
+    function incCounterVul($adID)
+    {
+        $query = "UPDATE Counter SET count=count+1 WHERE adID=$adID;";
+        if (mysqli_multi_query($this->db, $query)) {
+            return true;
+        }
+        else return false;
+    }
+    /**
+    * Increment counter of an ad vulnerably
+    * Set to mysqli_multi_query to demonstrate the inject attack
+    * Perform stripslashes and mysqli_escape_string before executing the query
     * @param $adID ID of the ad
     * @return true if success; ortherwise, return false
     */
     function incCounter($adID)
     {
-        $query = "UPDATE Counter SET count=count+1 WHERE adID=$adID";
-        if (mysqli_query($this->db, $query)) {
+        // Stripslashes
+        if (get_magic_quotes_gpc())
+          {
+          $goodID = stripslashes($adID);
+          }
+        // Quote if not a number
+        if (!is_numeric($adID))
+          {
+          $goodID = "'" . mysql_real_escape_string($adID) . "'";
+          }
+        
+        $query = "UPDATE Counter SET count=count+1 WHERE adID=$goodID;";
+        if (mysqli_multi_query($this->db, $query)) {
             return true;
         }
         else return false;
     }
+
     /**
     * Reset counter 
     * @return true if success; ortherwise, return false
