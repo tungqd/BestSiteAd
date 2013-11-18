@@ -28,13 +28,14 @@ class main
     */
     function mainController()
     {
-        $view = new SiteTestView();
+        
         $array = $this -> getTen();
         $_SESSION['view'] = "SiteTestView";
         if (isset($_GET['ac']) && $_GET['ac'] == "adclick") {
             $this->adClick($_GET['adID']);
             $this->redirect($_GET['url'], 303);
         }
+        $view = new SiteTestView();
         
 
     }
