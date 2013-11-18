@@ -19,7 +19,7 @@ class main
     */
     function __construct()
     {
-        $this->model = new model();
+        $this->model = new model();   
     }
     /**
     *
@@ -45,18 +45,16 @@ class main
     }
     /**
     * Get an ad from REST API
-    * @return associative array containing adID, title, url,
-    * and description of the ad
+    * @return associative array containing adID, title, url, description of the ad
     */
     function getAd()
     {
         $curl = curl_init();
-        $url = "http://localhost/CS174/Hw4/BestSiteAd/
-                                    index.php/get-ad/?format=xml";
+        $url = "http://localhost/CS174/Hw4/BestSiteAd/index.php/get-ad/?format=xml";
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($curl);
-
+        
         $xml = simplexml_load_string($result);
         $result = array();
         $result['adID'] = $xml->adID;
@@ -64,10 +62,9 @@ class main
         $result['url'] = $xml->url;
         $result['description'] = $xml->description;
         curl_close($curl);
-
+        
         return $result;
     }
-
     /**
     * increment ad counter by 1 when the ad is clicked
     * @param $adID ID of the ad
@@ -76,8 +73,7 @@ class main
     function adClick($adID)
     {
         $curl = curl_init();
-        $url = "http://localhost/CS174/Hw4/BestSiteAd/
-                                    index.php/increment-choice/?adID=".$adID;
+        $url = "http://localhost/CS174/Hw4/BestSiteAd/index.php/increment-choice/?adID=".$adID;
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($curl);

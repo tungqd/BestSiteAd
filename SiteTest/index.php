@@ -10,7 +10,7 @@
 */
 session_start();
 
-class SiteTest
+class BestSiteAd
 {
     /**
     * Constructor
@@ -19,7 +19,7 @@ class SiteTest
     {
         require_once('./config/config.php');
     }
-
+    
     /**
     *
     * render function
@@ -28,7 +28,6 @@ class SiteTest
     function render($viewname) {
         require_once("./views/{$viewname}.php");
     }
-
     /**
     * Calls appropriate controllers
     */
@@ -69,6 +68,7 @@ class SiteTest
 <?php
     }
 }
-$site_obj = new SiteTest();
+$site_obj = new BestSiteAd();
 $site_obj -> start(); 
 ?>
+

@@ -26,8 +26,7 @@ class Ad
             $this->model->deleteAd($_GET["adID"]);
         }
         else if(isset($_POST["ac"]) && $_POST["ac"] == "addAd"){
-            $this->addAnAd($_POST['title'],$_POST['url'],
-                                        $_POST['description']);
+            $this->addAnAd($_POST['title'],$_POST['url'],$_POST['description']);
         }
         $_SESSION['view'] = "LandingView"; 
         

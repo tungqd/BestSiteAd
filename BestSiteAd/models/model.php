@@ -14,11 +14,10 @@ class Model
      */
     function __construct() 
     {
-        $this->db = @mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE) 
-        or die('Could not connect to MySQL:'.mysqli_connect_error($this->db));
+        $this->db = @mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE) or die('Could not connect to MySQL:'.mysqli_connect_error($this->db));
         mysqli_set_charset($this->db, 'uft8');
     }
-
+    
     /**
      * Gets a random ad from Ads table
      * @return an associated array containing adID, title, url, description.
@@ -29,7 +28,7 @@ class Model
         $result = mysqli_query($this->db, $query);
         return mysqli_fetch_array($result, MYSQLI_ASSOC);
     }
-
+    
     /**
      * Gets an ad from Ads table
      * @param id the id of the poem
@@ -41,7 +40,6 @@ class Model
         $result = mysqli_query($this->db, $query);
         return mysqli_fetch_array($result, MYSQLI_ASSOC);
     }
-
     /**
      * Gets all ads from Ads table
      * @param id the id of the poem
@@ -65,7 +63,6 @@ class Model
         return $ads;
         
     }
-
     /**
     * Delete an ad
     * @param $adID ID of the ad
@@ -79,7 +76,6 @@ class Model
         }
         else return false;
     }
-
     /**
     * Add a ad
     * @param $title ad title
@@ -89,14 +85,12 @@ class Model
     */
     function addAd($title, $url, $description)
     {
-        $query = "INSERT INTO Ads(title,url,description) VALUES
-                                ('$title','$url','$description');";
+        $query = "INSERT INTO Ads(title,url,description) VALUES('$title','$url','$description');";
         if (mysqli_query($this->db, $query)) {
             return true;
         }
         else return false;
     }
-
     /**
     * Get number of clicks for an add
     * @param $adID ID of the ad
@@ -109,7 +103,6 @@ class Model
         $array = mysqli_fetch_array($result, MYSQLI_ASSOC);
         return $array['count'];
     }
-
     /**
     * Increment counter of an ad
     * @param $adID ID of the ad
@@ -123,7 +116,6 @@ class Model
         }
         else return false;
     }
-
     /**
     * Reset counter 
     * @return true if success; ortherwise, return false

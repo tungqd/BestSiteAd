@@ -40,14 +40,10 @@ class LandingView
                 $count = $obj->getCount($ad['adID']);
         ?>
             <div class="adItem">
-            <label><strong>Title:</strong></label>
-                            <?php echo $ad['title']; ?><br/>
-            <label><strong>Description:</strong></label>
-                            <?php echo $ad['description'];?><br/>
-            <label><strong>Number of clicks:</strong></label>
-                            <?php echo $count;?><br/>
-            <a href="index.php?c=ad&ac=deleteAd&adID=
-                            <?php echo $ad['adID'];?>">Delete Ad</a><br/>
+            <label><strong>Title:</strong></label><?php echo $ad['title']; ?><br/>
+            <label><strong>Description:</strong></label><?php echo $ad['description'];?><br/>
+            <label><strong>Number of clicks:</strong></label><?php echo $count;?><br/>
+            <a href="index.php?c=ad&ac=deleteAd&adID=<?php echo $ad['adID'];?>">Delete Ad</a><br/>
             </div><!-- close div id="adItem" -->
         <?php
         }
@@ -55,8 +51,7 @@ class LandingView
     </div><!-- close div id="ads" --> 
     <div class="right">
         <div id="submitAd">
-            <form onSubmit="return doCheck();" action="index.php?c=ad"
-                                id="addNewAd" name="addAd" method="POST">
+            <form onSubmit="return doCheck();" action="index.php?c=ad" id="addNewAd" name="addAd" method="POST">
                 <input type="hidden" name="ac" value="addAd">
                 <lable>Title:</lable><input type="text" name="title"/><br/>
                 <lable>URL:</lable><input type="text" name="url"/><br/>
@@ -90,7 +85,8 @@ class LandingView
             alert("Please enter Title.");
             return false;
         }
-
+        
+        
         else if (titleLength > 0)
         {
             /* Null input for author */

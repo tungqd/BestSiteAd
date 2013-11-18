@@ -11,12 +11,13 @@ require_once('./models/model.php');
 
 class Rest
 {
+
     private $model;
     function __construct()
     {
         $this->model = new model();
     }
-
+    
     /**
     * Call to display Submit Poem Page or Landing Page
     */
@@ -33,7 +34,6 @@ class Rest
                 break;
         }
     }
-
     /**
     * Get ad method
     */

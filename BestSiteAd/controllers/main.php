@@ -19,7 +19,7 @@ class main
     */
     function __construct()
     {
-        $this->model = new model();
+        $this->model = new model();   
     }
     
     /**
@@ -32,8 +32,8 @@ class main
             $this->resetClicks();
         }
         $_SESSION['view'] = "LandingView";
-    }
 
+    }
     function getAllAds()
     {
         $array = $this->model->getAds();
@@ -43,13 +43,11 @@ class main
         }
         return $result;
     }
-
     function getClicks($adID)
     {
         $counter = $this->model->getCounter($adID);
         return $counter;
     }
-
     function resetClicks()
     {
         return $this->model->resetCounter();

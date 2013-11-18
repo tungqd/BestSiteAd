@@ -30,8 +30,7 @@ class BestSiteAd
     /**
     *
     * Get method name from REST services call
-    * @return $method name of method to be called
-    * or 0 if no method and arg is detected
+    * @return $method name of method to be called or 0 if no method and arg is detected
     */
     function getMethod()
     {
@@ -57,12 +56,10 @@ class BestSiteAd
         $restReq = $this->getMethod();
         // there are 3 controllers
         $controllers_available= array('main','ad','rest');
-        if ($restReq !==null) 
-        {
+        if ($restReq !==null) {
             $controller = "rest";
         }
-        else if(isset($_GET['c']) && 
-                in_array($_GET['c'],$controllers_available)){
+        else if(isset($_GET['c']) && in_array($_GET['c'],$controllers_available)){
             if("main"==$_GET['c']){
                 $controller = "main";
             }
@@ -76,8 +73,8 @@ class BestSiteAd
 
         //function pointer to call the controller
         $this->$controller();
-    }
-
+    }  
+     
     /**
     * main controller
     */
@@ -88,7 +85,6 @@ class BestSiteAd
         $main->mainController();
         $this->displayView($_SESSION['view']);
     }
-
     /**
     * ad controller
     */
@@ -99,7 +95,6 @@ class BestSiteAd
         $ad->adController();
         $this->displayView($_SESSION['view']);
     }
-
     /**
     * rest controller
     */
@@ -110,7 +105,7 @@ class BestSiteAd
         $method = $this->getMethod();
         $rest->restController($method);
     }
-
+    
     /**
     *
     * displayView renders and displays specific view
@@ -124,16 +119,12 @@ class BestSiteAd
         <html>
             <head>
                 <title>Best Site Ad</title>
-                <meta name="author"
-                        content="Tung Dang, Loc Dang, Khanh Nguyen" />
-                <meta name="description"
-                        content="A site provides REST services" />
-                <meta name="keywords"
-                        content="HW4, items, ad, rest, api" />
+                <meta name="author" content="Tung Dang, Loc Dang, Khanh Nguyen" />
+                <meta name="description" content="A site provides REST services" />
+                <meta name="keywords" content="HW4, items, ad, rest, api" />
                 <meta charset="utf-8" />
                 <meta name="ROBOTS" content="NOINDEX, NOFOLLOW"/>
-                <link rel="stylesheet" type="text/css"
-                        href="./css/styles.css" />
+                <link rel="stylesheet" type="text/css" href="./css/styles.css" />
             </head>
             
             <body>
