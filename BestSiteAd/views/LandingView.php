@@ -54,15 +54,14 @@ class LandingView
         ?>
         <div class="adItem">
             <label><strong>Title: </strong></label>
-                            <?php echo $ad['title']; ?><br/>
+            <?php echo $ad['title']; ?><br/>
             <label><strong>URL: </strong></label>
             <a href="<?php echo $ad['url'];?>"><?php echo $ad['url'];?></a><br/>
             <label><strong>Description: </strong></label>
-                            <?php echo $ad['description'];?><br/>
+            <?php echo $ad['description'];?><br/>
             <label><strong>Number of clicks: </strong></label>
-                            <?php echo $count;?><br/>
-            <a href="index.php?c=ad&amp;ac=deleteAd&amp;
-                            adID=<?php echo $ad['adID'];?>">Delete Ad</a><br/>
+            <?php echo $count;?><br/>
+            <a href="index.php?c=ad&amp;ac=deleteAd&amp;adID=<?php echo $ad['adID'];?>">Delete Ad</a><br/>
         </div><!-- close div id="adItem" -->
         <?php
         }
