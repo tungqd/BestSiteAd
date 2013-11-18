@@ -27,7 +27,7 @@ body
     margin-right: 20px;
     margin-bottom: 20px;
 }
-#news
+.news
 {
     width: 90%;    
     border: 1px solid black;

@@ -124,11 +124,11 @@ class SiteTestView
                                     </div>
                                 <?php }
                             ?>
-                                <div id="news">       
+                                <div class="news">       
                                 <a href="index.php?c=main&amp;ac=adclick&amp;adID=0&amp;url=<?php echo $tenItems['url'];?>">
                                     <?php echo $tenItems['title'];?></a><br/>
                                 <?php echo $tenItems['content'];?><br>  
-                                </div> <!-- close div id="news"-->
+                                </div> <!-- close div class="news"-->
                             <?php 
                                 }
                             ?>

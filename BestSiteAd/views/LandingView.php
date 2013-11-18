@@ -49,7 +49,7 @@ class LandingView
             <label><strong>URL: </strong></label><a href="<?php echo $ad['url'];?>"><?php echo $ad['url'];?></a><br/>
             <label><strong>Description: </strong></label><?php echo $ad['description'];?><br/>
             <label><strong>Number of clicks: </strong></label><?php echo $count;?><br/>
-            <a href="index.php?c=ad&ac=deleteAd&adID=<?php echo $ad['adID'];?>">Delete Ad</a><br/>
+            <a href="index.php?c=ad&amp;ac=deleteAd&amp;adID=<?php echo $ad['adID'];?>">Delete Ad</a><br/>
             </div><!-- close div id="adItem" -->
         <?php
         }
@@ -59,15 +59,15 @@ class LandingView
         <div id="submitAd">
             <form onSubmit="return doCheck();" action="index.php?c=ad" id="addNewAd" name="addAd" method="POST">
                 <input type="hidden" name="ac" value="addAd">
-                <lable>Title:</lable><input type="text" name="title"/><br/>
-                <lable>URL:</lable><input type="text" name="url"/><br/>
+                <label>Title:</label><input type="text" name="title"/><br/>
+                <label>URL:</label><input type="text" name="url"/><br/>
                 <label>Description:</label><br/>
                 <textarea rows="5" cols="50" name="description"></textarea>
                 <input type="submit" value="Submit"/>
             </form>
         </div> <!-- close div id="submitAd" -->
         <div id="resetLink">
-            <a href="index.php?c=main&ac=resetCount">Reset Counter</a>
+            <a href="index.php?c=main&amp;ac=resetCount">Reset Counter</a>
         </div> <!-- close div id="resetLink" -->
     </div> <!-- close div class="right"-->
 </div> <!-- close div id="wrapper"-->
