@@ -13,12 +13,12 @@ body
 
 #wrapper
 {
-    position:fixed;
     left: 0;
     height: 100%;
     width: 100%;
-    margin: 0 auto;
+    margin: auto;
     overflow: auto;
+    overflow-y: auto;
 }
 
 .tenNewsItem
@@ -27,12 +27,16 @@ body
 }
 #news
 {
+    width: 100%;    
     border: 1px solid black;
-    width: 100%;
+    overflow-y: auto;
+    
 }
 #advertisement
 {
+    width: 100%;
     border: 1px dashed blue;
     background-color: LightGray;
-    width: 100%;
+    overflow-y: auto;
+    
 }
