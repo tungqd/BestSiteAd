@@ -10,7 +10,7 @@
 */
 session_start();
 
-class BestSiteAd
+class SiteTest
 {
     /**
     * Constructor
@@ -68,7 +68,7 @@ class BestSiteAd
 <?php
     }
 }
-$site_obj = new BestSiteAd();
+$site_obj = new SiteTest();
 $site_obj -> start(); 
 ?>
 
