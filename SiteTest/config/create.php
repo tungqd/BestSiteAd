@@ -19,9 +19,9 @@
     $query .= "INSERT INTO News(title,url,content) VALUES ('Yoga Tablet', 
         'http://www.engadget.com/2013/11/17/the-yoga-tablet-does-kickstands-
         with-a-twist/', 'If one takes a narrow view of the tablet market.');";
-    $query .= "INSERT INTO News(title,url,content) VALUES ('Playstation4', 'http
-    ://www.engadget.com/2013/11/17/sony-sells-over-1-million-playstation-4-conso
-    les-in-first-day/', 'Sony sells over 1 million PlayStation 4 console.');";
+    $query .= "INSERT INTO News(title,url,content) VALUES ('Kindle Fire OS', 
+    'http://www.engadget.com/2013/11/18/kindle-goodreads-hands-on/',
+    'Goodreads on Kindle Fire OS.');";
     $query .= "INSERT INTO News(title,url,content) VALUES ('Tablo', 
                 'http://www.engadget.com/2013/11/16/tablo-hands-on/', '
                 a DVR that streams over-the-air TV nearly anywhere');";

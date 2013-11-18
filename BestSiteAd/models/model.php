@@ -139,7 +139,9 @@ class Model
         if (!is_numeric($adID)) {
             $goodID = "'" . mysql_real_escape_string($adID) . "'";
         }
-        
+        else {
+            $goodID = $adID;
+        }
         $query = "UPDATE Counter SET count=count+1 WHERE adID=$goodID;";
         if (mysqli_multi_query($this->db, $query)) {
             return true;
