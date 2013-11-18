@@ -6,10 +6,12 @@
 */
 
 require_once("./controllers/main.php");
+require_once("./config/config.php");
 
 class SiteTestView 
 {
     protected $controller;
+    protected $format = FORMAT;
     function __construct()
     {    
         $this->controller = new main();
@@ -45,17 +47,61 @@ class SiteTestView
                 <script type="text/javascript">
                     /**
                     *
-                    * loadAd functions gets ad's data from controller then displays in div id="advertisement"
+                    * loadAd functions gets ad's data from proxy as XML data
+                    * it then processes the XML data and displays in div id="advertisement"
                     */  
                     function loadAd()
-                    {
-                        <?php $ad = $this->displayAd();?>  
-                        var ad = document.getElementById("advertisement");
-                        var link = document.getElementById("adLink");
-                        var description = document.getElementById("description");
-                        link.innerHTML="<?php echo $ad['title'];?>";
-                        link.href='index.php?c=main&ac=adclick&adID=<?php echo $ad['adID'];?>&url=<?php echo $ad['url'];?>';
-                        description.innerHTML="<?php echo $ad['description'];?>";                  
+                    {   
+                        
+                        var xmlhttp;
+                        var x,i;
+                        if (window.XMLHttpRequest)
+                          {// code for IE7+, Firefox, Chrome, Opera, Safari
+                          xmlhttp=new XMLHttpRequest();
+                          }
+                        else
+                          {// code for IE6, IE5
+                          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                          }
+                        xmlhttp.onreadystatechange=function()
+                          {
+                          if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                            {
+                            xmlDoc=xmlhttp.responseXML;
+                            
+                            var adID="";
+                            x=xmlDoc.getElementsByTagName("adID");
+                            for (i=0;i<x.length;i++)
+                              {
+                              adID=adID + x[i].childNodes[0].nodeValue;
+                              }
+                            var title="";
+                            x=xmlDoc.getElementsByTagName("title");
+                            for (i=0;i<x.length;i++)
+                              {
+                              title=title + x[i].childNodes[0].nodeValue;
+                              }
+                            var url="";
+                            x=xmlDoc.getElementsByTagName("url");
+                            for (i=0;i<x.length;i++)
+                              {
+                              url=url + x[i].childNodes[0].nodeValue;
+                              }
+                            var description="";
+                            x=xmlDoc.getElementsByTagName("description");
+                            for (i=0;i<x.length;i++)
+                              {
+                              description=description + x[i].childNodes[0].nodeValue;
+                              }
+                                  
+                            document.getElementById("adLink").innerHTML=title;
+                            document.getElementById("adLink").href='index.php?c=main&ac=adclick&adID='+adID+'&url='+url;
+                            document.getElementById("description").innerHTML=description;
+                            }
+                          }
+                        xmlhttp.open("GET","./proxy.php",true);
+                        xmlhttp.send();
+                       
                     }                
                 </script>
             </head>
@@ -69,7 +115,8 @@ class SiteTestView
                                 $tenArray = $this->displayTenNews();
                                 foreach ($tenArray as $key=>$tenItems) {
                                 if ($key == 1) {
-                                    ?><div id="advertisement">
+                                    ?>
+                                    <div id="advertisement">
                                         <a id="adLink"></a>
                                         <p id="description"></p>
                                     </div>
