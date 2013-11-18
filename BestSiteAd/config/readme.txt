@@ -8,6 +8,7 @@ Loc Dang, Tung Dang, Khanh Nguyen
         JSON: http://localhost/Hw4/BestSiteAd/index.php/get-ad/?format=json
         XML:  http://localhost/Hw4/BestSiteAd/index.php/get-ad/?format=xml
 
+5. When adding a new ad, please enter the url in the following form: "http://www.someplace.com" for the redirecting to work.
 
 Procedure to test MySQL Injection Attack:
 
@@ -19,5 +20,5 @@ From BestSiteAd, go to the following url:
     Increment-choice: http://localhost/Hw4/BestSiteAd/index.php/increment-choice/?adID=1;UPDATE%20Counter%20SET%20count=10000%20WHERE%20adID=0
         The counter for adid=0 stays the same because increment-choice stops the injection before executing the query
 Method 2:
-We implement the "Injection attack" button in SiteTest to demonstrate the vulnerability of increment-vulnerable.
+We implement the "Test Injection" button in SiteTest to demonstrate the vulnerability of increment-vulnerable.
 The result will be the same as issuing increment-vulnerable from BestSiteAd in method 1.
