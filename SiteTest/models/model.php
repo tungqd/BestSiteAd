@@ -14,7 +14,7 @@ class Model
      */
     function __construct() 
     {
-        $this->db = @mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE) or die('Could not connect to MySQL: ' . 	mysqli_connect_error($this->db));
+        $this->db = @mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE) or die('Could not connect to MySQL: '.mysqli_connect_error($this->db));
         mysqli_set_charset($this->db, 'uft8');
     }
     
@@ -43,7 +43,7 @@ class Model
     
     /**
      * Get top ten poems with highest ratings
-     * @return an array of associated arrays of top ten poems
+     * @return an array of associated arrays of ten stories
      */
     function getTenRandom() 
     {
@@ -56,12 +56,12 @@ class Model
             $topIDs[] = $row['id'];
         }
         //Get the titles of the poems
-        $poems = array();
+        $stories = array();
         foreach ($topIDs as $index => $value){
-            $poem = $this->getAStory($value);
-            $poems[] = $poem;
+            $story = $this->getAStory($value);
+            $stories[] = $story;
         }
-        return $poems;
+        return $stories;
     }
     
 }
