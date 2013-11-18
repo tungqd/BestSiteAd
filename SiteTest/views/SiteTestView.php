@@ -102,7 +102,7 @@ class SiteTestView
                         xmlhttp.open("GET","./proxy.php",true);
                         xmlhttp.send();
                        
-                    }                
+                    }
                 </script>
             </head>
             
@@ -110,6 +110,9 @@ class SiteTestView
                 <h1><a href="index.php"><?php echo SITENAME; ?></a></h1>
                 <b class="highest">10 random news items</b><br/><br/>
                 <div id="wrapper" class="siteTest">
+                <div id="button">
+                	<input type="button" value="Click" onclick="inject()"/> 
+                </div>
                     <div class="tenNewsItem"> 
                             <?php
                                 $tenArray = $this->displayTenNews();
