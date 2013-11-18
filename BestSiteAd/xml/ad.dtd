@@ -1,5 +1,6 @@
+<!ATTLIST ad xmlns CDATA "http://www.localhost/CS174/Hw4/BestSiteAd/index.php/get-ad/?format=xml">
 <!ELEMENT ad (id, title, url, description)>
-<!ELEMENT id (#CDATA)>
+<!ELEMENT id (#PCDATA)>
 <!ELEMENT title (#PCDATA)>
 <!ELEMENT url (#PCDATA)>
-<!ELEMENT description (#PCDATA)> 
+<!ELEMENT description (#PCDATA)>

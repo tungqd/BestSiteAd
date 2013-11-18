@@ -27,7 +27,7 @@ class Rest
         switch ($method)
         {
             case "get-ad":
-                $this->getAd();
+                $this->getAd($req['format']);
                 break;
             case "increment-choice":
                 $this->incrementChoice($req['adID']);
@@ -37,7 +37,7 @@ class Rest
     /**
     * Get ad method
     */
-    function getAd()
+    function getAd($format)
     {
         $array =$this->model->getRandomAd();
         $xml= new SimpleXMLElement("<ad></ad>");
@@ -56,8 +56,18 @@ class Rest
             $xml->addChild("$key","$value");
         }
         }
-        header('Content-type: text/xml');
-        print $xml->asXML();
+        if ($format == "xml") 
+        {
+            
+            header('Content-type: text/xml');
+            print $xml->asXML();        
+        }
+        else if ($format == "json")
+        {
+            header('Content-type: application/json; charset=utf-8');
+            print json_encode($xml);   
+        }
+
     }
     /**
     *

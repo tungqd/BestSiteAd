@@ -4,4 +4,5 @@
     DEFINE('PASSWORD', '');
     DEFINE('DATABASE', 'hw4_sitetest');
     DEFINE('SITENAME', 'SiteTest');
+    DEFINE('FORMAT', 'json');
 ?>

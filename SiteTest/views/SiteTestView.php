@@ -51,7 +51,7 @@ class SiteTestView
                 <?php }
             ?>
                 <div id="news">       
-                <a href="index.php">
+                <a href="index.php?c=main&amp;ac=adclick&amp;adID=0">
                     <?php echo $tenItems['title'];?></a><br/>
                 <?php echo $tenItems['content'];?><br>  
                 </div> <!-- close div id="news"-->
