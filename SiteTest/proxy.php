@@ -11,12 +11,7 @@ $result = curl_exec($curl);
     
 if (FORMAT == "xml")
 {            
-        $xml = simplexml_load_string($result);
-  //  $result = array();
-   // $result['adID'] = (string)$xml->adID;
-    //$result['title'] = (string)$xml->title;
-    //$result['url'] = (string)$xml->url;
-    //$result['description'] = (string)$xml->description;
+    $xml = simplexml_load_string($result);
     header('Content-type: text/xml');
     print $xml->asXML();  
     curl_close($curl);  
@@ -24,10 +19,26 @@ if (FORMAT == "xml")
 }
 else if (FORMAT== "json")
 {
-    $response = array();
-    $response = json_decode($result,true);   
-    curl_close($curl);
-    print_r ($result);
+    $response = json_decode($result,true);
+    $xml= new SimpleXMLElement("<ad></ad>");  
+    foreach($response as $key => $value) {
+        if(is_array($value)) {
+            if(!is_numeric($key)){
+                $subnode = $xml->addChild("$key");
+                array_to_xml($value, $subnode);
+            }
+            else{
+                $subnode = $xml->addChild("item$key");
+                array_to_xml($value, $subnode);
+            }
+        }
+        else {
+            $xml->addChild("$key","$value");
+        }
+        }
+    header('Content-type: text/xml');
+    print $xml->asXML();  
+    curl_close($curl); 
 }
 else
 {
