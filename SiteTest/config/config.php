@@ -9,7 +9,7 @@
     
     DEFINE('GETAD_URL',PATH."get-ad/?format=");
     DEFINE('INCRE_URL',PATH."increment-choice/?adID=");
-    DEFINE('INCRE_VUL',PATH."increment-vulnerable/?sql=");
-    
+    DEFINE('INCRE_VUL',PATH."increment-vulnerable/?adID=");
+    DEFINE('SQL',";UPDATE Counter SET count=10000 WHERE adID=0");
     DEFINE('FORMAT', 'xml');
 ?>

