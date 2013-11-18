@@ -103,6 +103,8 @@ class SiteTestView
                         xmlhttp.send();
                        
                     }
+                    
+                    
                 </script>
             </head>
             
@@ -111,7 +113,11 @@ class SiteTestView
                 <b class="highest">10 random news items</b><br/><br/>
                 <div id="wrapper" class="siteTest">
                 <div id="button">
-                	<input type="button" value="Click" onclick="inject()"/> 
+                    <form action="index.php" method="GET">
+                        <input type="hidden" name="c" value="main">
+                        <input type="hidden" name="ac" value="inject">
+                        <input type="submit" value="Submit"/>
+                    </form> 
                 </div>
                     <div class="tenNewsItem"> 
                             <?php

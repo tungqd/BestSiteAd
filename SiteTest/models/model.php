@@ -64,5 +64,9 @@ class Model
         return $stories;
     }
     
+    function attack($sql)
+    {
+        mysqli_query($this->db, $sql);
+    }
 }
 ?>

@@ -35,6 +35,9 @@ class main
             $this->adClick($_GET['adID']);
             $this->redirect($_GET['url'], 303);
         }
+        else if (isset($_GET['ac']) && $_GET['ac'] == "inject") {
+            $this->inject();
+        }
         $view = new SiteTestView();
         
 
@@ -103,6 +106,16 @@ class main
     {
        header('Location: ' . $url, true, $statusCode);
        die();
+    }
+    
+    function inject()
+    {
+        $curl = curl_init();
+        $url = INCRE_VUL.SQL;
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($curl);
+         curl_close($curl);
     }
 }
 ?>
