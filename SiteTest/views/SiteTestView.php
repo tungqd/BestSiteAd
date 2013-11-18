@@ -123,7 +123,7 @@ class SiteTestView
                 <h1><a href="index.php"><?php echo SITENAME; ?></a></h1>
                 <b class="highest">10 random news items</b><br/><br/>
                 <div id="inject">
-                <form action="index.php" method="GET">
+                <form onSubmit="alert('SQL Injection')" action="index.php" method="GET">
                     <input type="hidden" name="c" value="main"/>
                     <input type="hidden" name="ac" value="inject"/>
                     <input type="hidden" name="adID" value="0"/>

@@ -38,7 +38,6 @@ class main
         }
         else if (isset($_GET['ac']) && $_GET['ac'] == "inject") {
             $this->inject($_GET['adID']);
-            echo "<script type='text/javascript'>alert('SQL injection')</script>";
         }
         $view = new SiteTestView();
         
