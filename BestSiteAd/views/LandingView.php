@@ -97,8 +97,10 @@ class LandingView
         var x=document.getElementById("addNewAd");
         var title = x.elements[1].value;
         var titleLength = title.length;
-        var content = x.elements[2].value;
-        var contentLength = content.length;
+        var url = x.elements[2].value;
+        var urlLength = url.length;
+        var description = x.elements[3].value;
+        var descLength = description.length;
         
         /* Null input for title */
         if (titleLength == 0)
@@ -109,12 +111,23 @@ class LandingView
         
         else if (titleLength > 0)
         {
-            /* Null input for author */
-            if (contentLength == 0)
+            /* Null input for url */
+            if (urlLength == 0)
             {
                 alert("Please enter your Ad's URL.");
                 return false;
             }
+            
+            /* Null input for description */
+            else (urlLength != 0)
+            {
+                if(descLength == 0)
+                {
+                    alert("Please enter Description");
+                    return false;
+                }
+            }
+            
         }   
         return true;
     }
