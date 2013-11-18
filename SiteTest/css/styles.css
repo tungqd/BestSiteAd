@@ -28,11 +28,11 @@ body
 #news
 {
     border: 1px solid black;
-    width: 40%;
+    width: 100%;
 }
 #advertisement
 {
     border: 1px dashed blue;
     background-color: LightGray;
-    width: 40%;
+    width: 100%;
 }
