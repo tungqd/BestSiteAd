@@ -9,6 +9,7 @@
 *
 */
 require_once('./models/model.php');
+require_once('./views/SiteTestView.php');
 class main
 {
     private $model;
@@ -27,12 +28,14 @@ class main
     */
     function mainController()
     {
+        $view = new SiteTestView();
         $array = $this -> getTen();
         $_SESSION['view'] = "SiteTestView";
         if (isset($_GET['ac']) && $_GET['ac'] == "adclick") {
             $this->adClick($_GET['adID']);
             $this->redirect($_GET['url'], 303);
         }
+        
 
     }
     function getTen()
