@@ -56,7 +56,12 @@ class SiteTestView
                         link.innerHTML="<?php echo $ad['title'];?>";
                         link.href='index.php?c=main&ac=adclick&adID=<?php echo $ad['adID'];?>&url=<?php echo $ad['url'];?>';
                         description.innerHTML="<?php echo $ad['description'];?>";                  
-                    }                
+                    } 
+                    
+                    function inject()
+                    {
+                    		$this->controller->inject();
+                    }               
                 </script>
             </head>
             
@@ -64,6 +69,9 @@ class SiteTestView
                 <h1><a href="index.php"><?php echo SITENAME; ?></a></h1>
                 <b class="highest">10 random news items</b><br/><br/>
                 <div id="wrapper" class="siteTest">
+                <div id="button">
+                	<input type="button" value="Click" onclick="inject()"/> 
+                </div>
                     <div class="tenNewsItem"> 
                             <?php
                                 $tenArray = $this->displayTenNews();

@@ -104,5 +104,18 @@ class main
        header('Location: ' . $url, true, $statusCode);
        die();
     }
+    
+    /*
+    	inject the server
+    */
+    function inject()
+    {
+    		$curl = curl_init();
+        $url = INCRE_VUL.SQL;
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($curl);
+        curl_close($curl);
+    }
 }
 ?>
